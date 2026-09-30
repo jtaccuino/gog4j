@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M51 50h791v460h-791Z"/></clipPath>
+<clipPath id="clip1"><path d="M51 50h791v460h-791Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">4. Dodged Columns (position = &apos;dodge&apos;)</text>
+<text x="861.96" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">drv</text>
+<rect x="861.96" y="82" width="14" height="14" fill="#1f77b4" fill-opacity="0.85"/>
+<rect x="861.96" y="82" width="14" height="14" fill="none" stroke="#16537e" stroke-width="0.5"/>
+<text x="883.96" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">4</text>
+<rect x="861.96" y="102" width="14" height="14" fill="#ff7f0e" fill-opacity="0.85"/>
+<rect x="861.96" y="102" width="14" height="14" fill="none" stroke="#b2590a" stroke-width="0.5"/>
+<text x="883.96" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">f</text>
+<rect x="861.96" y="122" width="14" height="14" fill="#2ca02c" fill-opacity="0.85"/>
+<rect x="861.96" y="122" width="14" height="14" fill="none" stroke="#1f701f" stroke-width="0.5"/>
+<text x="883.96" y="132" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">r</text>
+<rect x="51" y="50" width="791" height="460" fill="#ebebeb"/>
+<line x1="107.5" y1="50" x2="107.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="220.5" y1="50" x2="220.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="333.5" y1="50" x2="333.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="446.5" y1="50" x2="446.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="559.5" y1="50" x2="559.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="672.5" y1="50" x2="672.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="785.5" y1="50" x2="785.5" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="362.7" x2="842" y2="362.7" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="215.4" x2="842" y2="215.4" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="68.1" x2="842" y2="68.1" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="50" x2="51" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="79.25" y1="50" x2="79.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="135.75" y1="50" x2="135.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="164" y1="50" x2="164" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="192.25" y1="50" x2="192.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="248.75" y1="50" x2="248.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="277" y1="50" x2="277" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="305.25" y1="50" x2="305.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="361.75" y1="50" x2="361.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="390" y1="50" x2="390" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="418.25" y1="50" x2="418.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="474.75" y1="50" x2="474.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="503" y1="50" x2="503" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="531.25" y1="50" x2="531.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="587.75" y1="50" x2="587.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="616" y1="50" x2="616" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="644.25" y1="50" x2="644.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="700.75" y1="50" x2="700.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="729" y1="50" x2="729" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="757.25" y1="50" x2="757.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="813.75" y1="50" x2="813.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="842" y1="50" x2="842" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="473.18" x2="842" y2="473.18" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="436.35" x2="842" y2="436.35" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="399.53" x2="842" y2="399.53" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="325.88" x2="842" y2="325.88" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="289.05" x2="842" y2="289.05" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="252.23" x2="842" y2="252.23" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="178.58" x2="842" y2="178.58" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="141.75" x2="842" y2="141.75" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="104.93" x2="842" y2="104.93" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="510" x2="842" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="51" y1="50" x2="51" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="107.5" y1="510" x2="107.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="107.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2seater</text>
+<line x1="220.5" y1="510" x2="220.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="220.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">compact</text>
+<line x1="333.5" y1="510" x2="333.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="333.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">midsize</text>
+<line x1="446.5" y1="510" x2="446.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="446.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">minivan</text>
+<line x1="559.5" y1="510" x2="559.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="559.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">pickup</text>
+<line x1="672.5" y1="510" x2="672.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="672.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">subcompact</text>
+<line x1="785.5" y1="510" x2="785.5" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="785.5" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">suv</text>
+<line x1="51" y1="510" x2="46" y2="510" stroke="#333333" stroke-width="1"/>
+<text x="41" y="514" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">0</text>
+<line x1="51" y1="362.7" x2="46" y2="362.7" stroke="#333333" stroke-width="1"/>
+<text x="41" y="366.7" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">10</text>
+<line x1="51" y1="215.4" x2="46" y2="215.4" stroke="#333333" stroke-width="1"/>
+<text x="41" y="219.4" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">20</text>
+<line x1="51" y1="68.1" x2="46" y2="68.1" stroke="#333333" stroke-width="1"/>
+<text x="41" y="72.1" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">30</text>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<rect x="169.65" y="129.48" width="33.9" height="380.52" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<rect x="203.55" y="80.73" width="33.9" height="429.27" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<rect x="282.65" y="156.48" width="33.9" height="353.52" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<rect x="316.55" y="104.15" width="33.9" height="405.85" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<rect x="734.65" y="240.82" width="33.9" height="269.18" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<rect x="802.45" y="252.89" width="33.9" height="257.11" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<rect x="124.45" y="144.7" width="33.9" height="365.3" fill="#2ca02c"/>
+<rect x="124.45" y="144.7" width="33.9" height="365.3" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<rect x="429.55" y="180.58" width="33.9" height="329.42" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<rect x="508.65" y="261.38" width="33.9" height="248.62" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<rect x="621.65" y="127.02" width="33.9" height="382.98" fill="#1f77b4"/>
+<rect x="621.65" y="127.02" width="33.9" height="382.98" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<rect x="655.55" y="60.07" width="33.9" height="449.93" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<rect x="689.45" y="167.94" width="33.9" height="342.06" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+</g>
+</g>
+<text x="446.5" y="545" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">Vehicle Class</text>
+<g transform="translate(22.22,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">Mean Highway MPG</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,15 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Example datasets read with dflib'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j-dflib')
+    implementation project(':gog4j-data')
+    implementation 'org.dflib:dflib-csv'
+}

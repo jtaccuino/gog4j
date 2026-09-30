@@ -1,0 +1,246 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Gradle Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build with ${{ matrix.distribution }} JDK ${{ matrix.jdk }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      matrix:
+        jdk:
+          - '26'
+        distribution:
+          - 'temurin'
+
+    steps:
+      # Check out sources
+      - name: Fetch Sources
+        uses: actions/checkout@v7.0.1
+
+      # Setup JDK environment for the next steps
+      - name: Setup ${{ matrix.distribution }} JDK ${{ matrix.jdk }} for gradle
+        uses: actions/setup-java@v6.0.0
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.jdk }}
+          cache: gradle
+
+      # Setup gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6.3.0
+        with:
+          validate-wrappers: true
+
+      # Run assemble tasks
+      - name: Run assemble tasks
+        run: ./gradlew --no-daemon --refresh-dependencies --warning-mode all --stacktrace assemble
+
+      # Run test tasks
+      - name: Run test tasks
+        run: ./gradlew --no-daemon --warning-mode all test
+
+      # Run check tasks
+      - name: Run check tasks
+        run: ./gradlew --no-daemon --warning-mode all check
+
+      # Publish to GitHub Packages on push to main
+      - name: Publish to GitHub Packages
+        if: ${{ (github.event_name == 'push') && success() }}
+        run: ./gradlew --no-daemon --warning-mode all publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Archive test reports
+      - name: Archive build logs
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ matrix.distribution }}-jdk${{ matrix.jdk }}-build-logs
+          retention-days: 5
+          path: |
+            **/build/reports/*
+
+  # Performance check stage: runs after the normal build so correctness gates
+  # complete first. Exercises the benchmarks excluded from the default 'test'
+  # task (./gradlew benchmarkTest): the JFR phase-timing report and the
+  # render-pulse smoke test. On pull requests the JFR report is additionally
+  # measured on both the PR head and the PR base branch, diffed by the jbang
+  # BenchmarkDiff script, and posted as a comment; the job fails when a gated
+  # phase regresses beyond the configured limit.
+  benchmark:
+    name: Performance benchmark
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    env:
+      BENCH_MAX_REGRESSION_PCT: '15'
+      BENCH_GATE_MIN_US: '1000'
+      BENCH_MIN_DELTA_US: '1000'
+      BENCH_NOISY_CV: '15'
+      BENCH_RUNS: '5'
+
+    steps:
+      # Check out sources
+      - name: Fetch Sources
+        uses: actions/checkout@v7.0.1
+
+      # Check out the pull request base branch for the comparison
+      - name: Fetch Base Sources
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: pr-base
+
+      # Setup JDK environment for the next steps
+      - name: Setup JDK 26 for benchmark
+        uses: actions/setup-java@v6.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '26'
+          cache: gradle
+
+      # Setup gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6.3.0
+        with:
+          validate-wrappers: true
+
+      # Install jbang (official installer; JVM comes from setup-java)
+      - name: Install jbang
+        run: |
+          curl -Ls https://sh.jbang.dev | bash
+          echo "$HOME/.jbang/bin" >> "$GITHUB_PATH"
+
+      # Benchmark the PR head with the JFR phase-timing report only
+      # (RenderPulseTimingTest stays out of the PR diff: slow and noisy).
+      # Several reruns are accumulated in build/benchmark/<plot>.jsonl so the
+      # diff can aggregate away whole-run outliers (shared machine load).
+      - name: Run head benchmark (reruns)
+        if: github.event_name == 'pull_request'
+        run: |
+          for i in $(seq 1 "$BENCH_RUNS"); do
+            # benchmarkTest outputs are never cleaned by cleanTest, so force re-execution
+            rm -rf gog4j-tests/build/test-results/benchmarkTest gog4j-tests/build/reports/benchmarkTest
+            EXTRA_ARGS=""
+            if [ "$i" = "$BENCH_RUNS" ]; then EXTRA_ARGS="-Pjitlog=true"; fi
+            ./gradlew --no-daemon --warning-mode all --stacktrace $EXTRA_ARGS :gog4j-tests:benchmarkTest --tests 'org.jtaccuino.gog.JfrBenchmarkTest'
+          done
+
+      # Benchmark the base branch back-to-back on the same runner for a fair
+      # comparison. The base may predate the multi-project split (the change
+      # under review), where the benchmark lived in the root project and wrote
+      # to build/benchmark; later bases use :gog4j-tests. Resolve the task path
+      # and output directory from the layout that is actually checked out.
+      - name: Run base benchmark (reruns)
+        if: github.event_name == 'pull_request'
+        working-directory: pr-base
+        run: |
+          if [ -d gog4j-tests ]; then
+            BENCH_TASK=":gog4j-tests:benchmarkTest"
+            BENCH_DIR="gog4j-tests/build/benchmark"
+            CLEAN_DIRS="gog4j-tests/build/test-results/benchmarkTest gog4j-tests/build/reports/benchmarkTest"
+          else
+            BENCH_TASK="benchmarkTest"
+            BENCH_DIR="build/benchmark"
+            CLEAN_DIRS="build/test-results/benchmarkTest build/reports/benchmarkTest"
+          fi
+          echo "BENCH_TASK=$BENCH_TASK"
+          echo "BENCH_DIR=$BENCH_DIR"
+          echo "BENCH_DIR=$BENCH_DIR" >> "$GITHUB_ENV"
+          for i in $(seq 1 "$BENCH_RUNS"); do
+            rm -rf $CLEAN_DIRS
+            ./gradlew --no-daemon --warning-mode all --stacktrace "$BENCH_TASK" --tests 'org.jtaccuino.gog.JfrBenchmarkTest'
+          done
+
+      # Diff head vs base and fail on gated regressions beyond the limit. The
+      # base benchmark directory is resolved by the previous step (old layout
+      # writes to the root build/benchmark, the split layout to gog4j-tests).
+      - name: Diff head vs base benchmarks
+        id: benchmark-diff
+        if: github.event_name == 'pull_request'
+        run: |
+          jbang .github/scripts/BenchmarkDiff.java \
+            --base-dir "pr-base/${BENCH_DIR:-gog4j-tests/build/benchmark}" \
+            --head-dir gog4j-tests/build/benchmark \
+            --out benchmark.md \
+            --max-regression "$BENCH_MAX_REGRESSION_PCT" \
+            --min-gate-us "$BENCH_GATE_MIN_US" \
+            --min-delta-us "$BENCH_MIN_DELTA_US" \
+            --noisy-cv "$BENCH_NOISY_CV"
+
+      # Post or update the comparison comment on the pull request
+      - name: Update PR benchmark comment
+        if: ${{ github.event_name == 'pull_request' && !cancelled() }}
+        uses: actions/github-script@v9.0.0
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('benchmark.md')) { return; } // benchmarks did not produce a diff
+            const anchor = '<!-- jtgg-benchmark-diff -->';
+            const body = fs.readFileSync('benchmark.md', 'utf8').trim() + '\n\n' + anchor;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(anchor));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      # Run the full benchmark (JFR + render pulse) on pushes to main
+      - name: Run benchmark tests
+        if: github.event_name != 'pull_request'
+        run: ./gradlew --no-daemon --warning-mode all --stacktrace :gog4j-tests:benchmarkTest
+
+      # Archive benchmark reports and the comparison
+      - name: Archive benchmark reports
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: benchmark-reports
+          retention-days: 5
+          path: |
+            gog4j-tests/build/benchmark/*
+            pr-base/gog4j-tests/build/benchmark/*
+            pr-base/build/benchmark/*
+            benchmark.md
+            **/build/reports/*
+            **/build/test-results/benchmarkTest/*

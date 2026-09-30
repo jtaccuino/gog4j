@@ -1,0 +1,6 @@
+# The published source datasets live here but are not committed: together they
+# are ~50 MB, and they are freely re-downloadable from the addresses recorded in
+# ../derive-demo-dataset.sh. Run that script to fetch them and regenerate the
+# committed demo files.
+*
+!.gitignore

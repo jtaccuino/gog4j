@@ -1,0 +1,54 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Render, scale and benchmark tests that exercise core against the dflib backend and examples'
+
+// Test-only module: not published.
+tasks.withType(AbstractPublishToMaven).configureEach {
+    enabled = false
+}
+
+dependencies {
+    testImplementation project(':gog4j')
+    testImplementation testFixtures(project(':gog4j'))
+    testImplementation project(':gog4j-dflib')
+    testImplementation project(':gog4j-dflib-data')
+    testImplementation project(':gog4j-hardwood')
+    testImplementation project(':gog4j-hardwood-data')
+    testImplementation project(':gog4j-examples-dflib')
+    testImplementation project(':gog4j-examples-hardwood')
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+    implementation "org.apache.commons:commons-math4-core:${commonsMathVersion}"
+    implementation "org.apache.commons:commons-math4-legacy:${commonsMathVersion}"
+
+    // Rasterises the exported SVG so it can be compared pixel by pixel against
+    // the canvas rendering of the same plot.
+    testImplementation "org.apache.xmlgraphics:batik-transcoder:${batikVersion}"
+    testImplementation "org.apache.xmlgraphics:batik-codec:${batikVersion}"
+}
+
+// Runs only the tagged benchmarks: ./gradlew :gog4j-tests:benchmarkTest
+tasks.register('benchmarkTest', Test) {
+    group = 'verification'
+    description = 'Runs the JFR phase-timing and render-pulse benchmarks, excluded from the default test task.'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform {
+        includeTags 'benchmark'
+    }
+    workingDir = projectDir
+    doFirst {
+        file('build/benchmark').mkdirs()
+    }
+    if (providers.gradleProperty('jitlog').getOrElse('false') == 'true') {
+        jvmArgs '-XX:+UnlockDiagnosticVMOptions', '-XX:+LogCompilation',
+                '-XX:LogFile=build/benchmark/hotspot.log'
+    }
+    jvmArgs '-Dglass.platform=headless', '-Dprism.order=sw', '--enable-native-access=ALL-UNNAMED'
+    testLogging {
+        showStandardStreams = true
+    }
+}

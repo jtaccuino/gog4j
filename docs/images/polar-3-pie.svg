@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M633 280 A207 207 0 0 1 219 280 A207 207 0 0 1 633 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h752v460h-752Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">3. Pie (coordPolar(theta = &apos;y&apos;))</text>
+<text x="822.14" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">Cylinders</text>
+<rect x="822.14" y="82" width="14" height="14" fill="#1f77b4" fill-opacity="0.85"/>
+<rect x="822.14" y="82" width="14" height="14" fill="none" stroke="#16537e" stroke-width="0.5"/>
+<text x="844.14" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">4 cylinders</text>
+<rect x="822.14" y="102" width="14" height="14" fill="#ff7f0e" fill-opacity="0.85"/>
+<rect x="822.14" y="102" width="14" height="14" fill="none" stroke="#b2590a" stroke-width="0.5"/>
+<text x="844.14" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">6 cylinders</text>
+<rect x="822.14" y="122" width="14" height="14" fill="#2ca02c" fill-opacity="0.85"/>
+<rect x="822.14" y="122" width="14" height="14" fill="none" stroke="#1f701f" stroke-width="0.5"/>
+<text x="844.14" y="132" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">8 cylinders</text>
+<rect x="50" y="50" width="752" height="460" fill="#ebebeb"/>
+<ellipse cx="426" cy="280" rx="69" ry="69" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="426" cy="280" rx="138" ry="138" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="426" y1="280" x2="426" y2="73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="426" y1="73" x2="426" y2="69" stroke="#333333" stroke-width="1"/>
+<text x="426" y="55" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">0</text>
+<line x1="426" y1="280" x2="598.11" y2="165" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="598.11" y1="165" x2="601.44" y2="162.77" stroke="#333333" stroke-width="1"/>
+<text x="613.08" y="155" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">5</text>
+<line x1="426" y1="280" x2="617.24" y2="359.22" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="617.24" y1="359.22" x2="620.94" y2="360.75" stroke="#333333" stroke-width="1"/>
+<text x="633.87" y="366.1" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">10</text>
+<line x1="426" y1="280" x2="466.38" y2="483.02" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="466.38" y1="483.02" x2="467.16" y2="486.95" stroke="#333333" stroke-width="1"/>
+<text x="469.9" y="500.68" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">15</text>
+<line x1="426" y1="280" x2="279.63" y2="426.37" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="279.63" y1="426.37" x2="276.8" y2="429.2" stroke="#333333" stroke-width="1"/>
+<text x="266.9" y="439.1" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">20</text>
+<line x1="426" y1="280" x2="222.98" y2="239.62" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="222.98" y1="239.62" x2="219.05" y2="238.84" stroke="#333333" stroke-width="1"/>
+<text x="205.32" y="236.1" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">25</text>
+<line x1="426" y1="280" x2="346.78" y2="88.76" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="346.78" y1="88.76" x2="345.25" y2="85.06" stroke="#333333" stroke-width="1"/>
+<text x="339.9" y="72.13" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">30</text>
+<ellipse cx="426" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<path d="M426 280 L425.1 73 A207 207 0 0 1 597.61 395.75 Z" fill="#1f77b4"/>
+<path d="M426 280 L598.61 394.25 A207 207 0 0 1 345.95 470.90 Z" fill="#ff7f0e"/>
+<path d="M426 280 L347.62 471.59 A207 207 0 0 1 426.90 73 Z" fill="#2ca02c"/>
+</g>
+</g>
+</svg>

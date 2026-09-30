@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M51 50h799v460h-799Z"/></clipPath>
+<clipPath id="clip1"><path d="M51 50h799v460h-799Z"/></clipPath>
+<clipPath id="clip2"><path d="M51 50h799v460h-799Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">6. Default diagonal, outside the data range</text>
+<rect x="51" y="50" width="799" height="460" fill="#ebebeb"/>
+<line x1="177.77" y1="50" x2="177.77" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="363.49" y1="50" x2="363.49" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="549.21" y1="50" x2="549.21" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="734.94" y1="50" x2="734.94" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="496.21" x2="850" y2="496.21" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="318.26" x2="850" y2="318.26" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="51" y1="140.31" x2="850" y2="140.31" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="84.9" y1="50" x2="84.9" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="131.33" y1="50" x2="131.33" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="224.2" y1="50" x2="224.2" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="270.63" y1="50" x2="270.63" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="317.06" y1="50" x2="317.06" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="409.92" y1="50" x2="409.92" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="456.35" y1="50" x2="456.35" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="502.78" y1="50" x2="502.78" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="595.64" y1="50" x2="595.64" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="642.07" y1="50" x2="642.07" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="688.5" y1="50" x2="688.5" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="781.37" y1="50" x2="781.37" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="827.8" y1="50" x2="827.8" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="451.72" x2="850" y2="451.72" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="407.23" x2="850" y2="407.23" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="362.75" x2="850" y2="362.75" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="273.77" x2="850" y2="273.77" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="229.28" x2="850" y2="229.28" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="184.8" x2="850" y2="184.8" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="95.82" x2="850" y2="95.82" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="51.33" x2="850" y2="51.33" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="51" y1="510" x2="850" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="51" y1="50" x2="51" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="177.77" y1="510" x2="177.77" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="177.77" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2</text>
+<line x1="363.49" y1="510" x2="363.49" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="363.49" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">3</text>
+<line x1="549.21" y1="510" x2="549.21" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="549.21" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">4</text>
+<line x1="734.94" y1="510" x2="734.94" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="734.94" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">5</text>
+<line x1="51" y1="496.21" x2="46" y2="496.21" stroke="#333333" stroke-width="1"/>
+<text x="41" y="500.21" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">10</text>
+<line x1="51" y1="318.26" x2="46" y2="318.26" stroke="#333333" stroke-width="1"/>
+<text x="41" y="322.26" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">20</text>
+<line x1="51" y1="140.31" x2="46" y2="140.31" stroke="#333333" stroke-width="1"/>
+<text x="41" y="144.31" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">30</text>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<g fill="#e31a1c" stroke="#9f1214" stroke-width="1"><circle cx="292.91" cy="300.46" r="1.5"/><circle cx="340.27" cy="300.46" r="1.5"/><circle cx="237.2" cy="268.43" r="1.5"/><circle cx="403.42" cy="293.35" r="1.5"/><circle cx="445.21" cy="341.39" r="1.5"/><circle cx="448.92" cy="352.07" r="1.5"/><circle cx="469.35" cy="419.69" r="1.5"/><circle cx="398.78" cy="239.96" r="1.5"/><circle cx="391.35" cy="268.43" r="1.5"/><circle cx="445.21" cy="332.5" r="1.5"/><circle cx="445.21" cy="357.41" r="1.5"/><circle cx="562.21" cy="382.32" r="1.5"/><circle cx="499.07" cy="366.31" r="1.5"/><circle cx="508.35" cy="403.68" r="1.5"/><circle cx="781.37" cy="489.09" r="1.5"/><circle cx="813.68" cy="489.09" r="1.5"/><circle cx="799.01" cy="412.57" r="1.5"/><circle cx="214.91" cy="97.6" r="1.5"/><circle cx="106.26" cy="133.19" r="1.5"/><circle cx="147.12" cy="70.91" r="1.5"/><circle cx="264.13" cy="291.57" r="1.5"/><circle cx="460.06" cy="398.34" r="1.5"/><circle cx="444.28" cy="403.68" r="1.5"/><circle cx="519.5" cy="437.49" r="1.5"/><circle cx="520.42" cy="332.5" r="1.5"/><circle cx="165.69" cy="188.36" r="1.5"/><circle cx="203.77" cy="211.49" r="1.5"/><circle cx="87.32" cy="133.19" r="1.5"/><circle cx="395.06" cy="393" r="1.5"/><circle cx="320.77" cy="323.6" r="1.5"/><circle cx="469.35" cy="407.23" r="1.5"/><circle cx="322.63" cy="293.35" r="1.5"/></g>
+</g>
+<g clip-path="url(#clip2)">
+<path d="M51 650.71 L57.66 650.08 L64.32 649.44 L70.98 648.8 L77.63 648.16 L84.29 647.52 L90.95 646.89 L97.61 646.25 L104.27 645.61 L110.93 644.97 L117.58 644.33 L124.24 643.7 L130.9 643.06 L137.56 642.42 L144.22 641.78 L150.88 641.15 L157.53 640.51 L164.19 639.87 L170.85 639.23 L177.51 638.59 L184.17 637.96 L190.83 637.32 L197.48 636.68 L204.14 636.04 L210.8 635.4 L217.46 634.77 L224.12 634.13 L230.77 633.49 L237.43 632.85 L244.09 632.21 L250.75 631.58 L257.41 630.94 L264.07 630.3 L270.72 629.66 L277.38 629.02 L284.04 628.39 L290.7 627.75 L297.36 627.11 L304.02 626.47 L310.68 625.83 L317.33 625.2 L323.99 624.56 L330.65 623.92 L337.31 623.28 L343.97 622.64 L350.63 622.01 L357.28 621.37 L363.94 620.73 L370.6 620.09 L377.26 619.45 L383.92 618.82 L390.57 618.18 L397.23 617.54 L403.89 616.9 L410.55 616.26 L417.21 615.63 L423.87 614.99 L430.53 614.35 L437.18 613.71 L443.84 613.07 L450.5 612.44 L457.16 611.8 L463.82 611.16 L470.48 610.52 L477.13 609.88 L483.79 609.25 L490.45 608.61 L497.11 607.97 L503.77 607.33 L510.42 606.7 L517.08 606.06 L523.74 605.42 L530.4 604.78 L537.06 604.14 L543.72 603.51 L550.38 602.87 L557.03 602.23 L563.69 601.59 L570.35 600.95 L577.01 600.32 L583.67 599.68 L590.32 599.04 L596.98 598.4 L603.64 597.76 L610.3 597.13 L616.96 596.49 L623.62 595.85 L630.27 595.21 L636.93 594.57 L643.59 593.94 L650.25 593.3 L656.91 592.66 L663.57 592.02 L670.23 591.38 L676.88 590.75 L683.54 590.11 L690.2 589.47 L696.86 588.83 L703.52 588.19 L710.18 587.56 L716.83 586.92 L723.49 586.28 L730.15 585.64 L736.81 585 L743.47 584.37 L750.12 583.73 L756.78 583.09 L763.44 582.45 L770.1 581.81 L776.76 581.18 L783.42 580.54 L790.08 579.9 L796.73 579.26 L803.39 578.62 L810.05 577.99 L816.71 577.35 L823.37 576.71 L830.03 576.07 L836.68 575.43 L843.34 574.8 L850 574.16" fill="none" stroke="#7f8c8d" stroke-width="1"/>
+</g>
+</g>
+<text x="450.5" y="545" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">weight (1,000 lb)</text>
+<g transform="translate(22.22,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">miles per gallon</text>
+</g>
+</g>
+</svg>

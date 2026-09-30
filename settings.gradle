@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'gog4j'
+
+includeBuild 'build-logic'
+
+include 'gog4j'
+include 'gog4j-dflib'
+include 'gog4j-data'
+include 'gog4j-dflib-data'
+include 'gog4j-hardwood'
+include 'gog4j-hardwood-data'
+include 'gog4j-controls'
+include 'gog4j-examples-dflib'
+include 'gog4j-examples-hardwood'
+include 'gog4j-builder'
+include 'gog4j-sampler-annotations'
+include 'gog4j-sampler'
+include 'gog4j-tests'

@@ -1,0 +1,73 @@
+/* Base (light) styling for the sampler chrome, the plot cards and the filter
+ * bar. The dark theme overrides these rules from sampler-dark.css with the
+ * higher-specificity `.sampler-dark <class>` selectors. */
+
+.sampler-root {
+    -fx-background-color: #ececec;
+}
+
+.sampler-filter-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #d9d9d9 transparent;
+}
+
+.sampler-filter-label {
+    -fx-text-fill: #5a5a5a;
+    -fx-font-size: 12px;
+}
+
+.sampler-status-label {
+    -fx-text-fill: #8a8a8a;
+    -fx-font-size: 11px;
+}
+
+.sampler-count-label {
+    -fx-text-fill: #8a8a8a;
+    -fx-font-size: 11px;
+}
+
+.sampler-clear-all {
+    -fx-background-color: transparent;
+    -fx-text-fill: #7a7a7a;
+    -fx-cursor: hand;
+}
+
+.sampler-card {
+    -fx-border-color: #d9d9d9;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: #ffffff;
+}
+
+.sampler-card-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+.sampler-card-description {
+    -fx-text-fill: #444444;
+    -fx-font-size: 12px;
+}
+
+.sampler-card-failure {
+    -fx-text-fill: brown;
+}
+
+.sampler-card-timing {
+    -fx-text-fill: #8a8a8a;
+    -fx-font-size: 11px;
+}
+
+.sampler-card-loading {
+    -fx-text-fill: #8a8a8a;
+    -fx-font-size: 12px;
+}
+
+.sampler-plot-backdrop {
+    -fx-background-color: #ffffff;
+}
+
+.sampler-placeholder {
+    -fx-text-fill: #8a8a8a;
+}

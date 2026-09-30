@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M50 50h800v460h-800Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h800v460h-800Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">9. Displacement by Drive Type (horizontal)</text>
+<rect x="50" y="50" width="800" height="460" fill="#ebebeb"/>
+<line x1="140.24" y1="50" x2="140.24" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="274.92" y1="50" x2="274.92" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="409.6" y1="50" x2="409.6" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="544.28" y1="50" x2="544.28" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="678.96" y1="50" x2="678.96" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="813.64" y1="50" x2="813.64" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="50" y1="433.33" x2="850" y2="433.33" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="50" y1="280" x2="850" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="50" y1="126.67" x2="850" y2="126.67" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="72.9" y1="50" x2="72.9" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="106.57" y1="50" x2="106.57" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="173.91" y1="50" x2="173.91" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="207.58" y1="50" x2="207.58" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="241.25" y1="50" x2="241.25" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="308.59" y1="50" x2="308.59" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="342.26" y1="50" x2="342.26" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="375.93" y1="50" x2="375.93" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="443.27" y1="50" x2="443.27" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="476.94" y1="50" x2="476.94" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="510.61" y1="50" x2="510.61" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="577.95" y1="50" x2="577.95" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="611.62" y1="50" x2="611.62" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="645.29" y1="50" x2="645.29" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="712.63" y1="50" x2="712.63" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="746.3" y1="50" x2="746.3" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="779.97" y1="50" x2="779.97" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="847.31" y1="50" x2="847.31" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="510" x2="850" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="471.67" x2="850" y2="471.67" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="395" x2="850" y2="395" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="356.67" x2="850" y2="356.67" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="318.33" x2="850" y2="318.33" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="241.67" x2="850" y2="241.67" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="203.33" x2="850" y2="203.33" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="165" x2="850" y2="165" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="88.33" x2="850" y2="88.33" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="50" x2="850" y2="50" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="50" y1="510" x2="850" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="140.24" y1="510" x2="140.24" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="140.24" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2</text>
+<line x1="274.92" y1="510" x2="274.92" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="274.92" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">3</text>
+<line x1="409.6" y1="510" x2="409.6" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="409.6" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">4</text>
+<line x1="544.28" y1="510" x2="544.28" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="544.28" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">5</text>
+<line x1="678.96" y1="510" x2="678.96" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="678.96" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">6</text>
+<line x1="813.64" y1="510" x2="813.64" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="813.64" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">7</text>
+<line x1="50" y1="433.33" x2="45" y2="433.33" stroke="#333333" stroke-width="1"/>
+<text x="40" y="437.33" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">4</text>
+<line x1="50" y1="280" x2="45" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="40" y="284" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">f</text>
+<line x1="50" y1="126.67" x2="45" y2="126.67" stroke="#333333" stroke-width="1"/>
+<text x="40" y="130.67" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">r</text>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<rect x="261.45" y="413.33" width="242.42" height="40" fill="#f58518" stroke="#1c5480" stroke-width="1"/>
+<line x1="746.3" y1="433.33" x2="113.3" y2="433.33" stroke="#1c5480" stroke-width="1"/>
+<line x1="746.3" y1="413.33" x2="746.3" y2="453.33" stroke="#1c5480" stroke-width="1"/>
+<line x1="113.3" y1="413.33" x2="113.3" y2="453.33" stroke="#1c5480" stroke-width="1"/>
+<line x1="409.6" y1="413.33" x2="409.6" y2="453.33" stroke="#1c5480" stroke-width="2.5"/>
+<rect x="140.24" y="260" width="134.68" height="40" fill="#f58518" stroke="#1c5480" stroke-width="1"/>
+<line x1="409.6" y1="280" x2="86.36" y2="280" stroke="#1c5480" stroke-width="1"/>
+<line x1="409.6" y1="260" x2="409.6" y2="300" stroke="#1c5480" stroke-width="1"/>
+<line x1="86.36" y1="260" x2="86.36" y2="300" stroke="#1c5480" stroke-width="1"/>
+<line x1="194.11" y1="260" x2="194.11" y2="300" stroke="#1c5480" stroke-width="2.5"/>
+<circle cx="584.68" cy="280" r="2" fill="#e31a1c" stroke="#9f1214" stroke-width="1"/>
+<rect x="490.4" y="106.67" width="148.15" height="40" fill="#f58518" stroke="#1c5480" stroke-width="1"/>
+<line x1="813.64" y1="126.67" x2="382.66" y2="126.67" stroke="#1c5480" stroke-width="1"/>
+<line x1="813.64" y1="106.67" x2="813.64" y2="146.67" stroke="#1c5480" stroke-width="1"/>
+<line x1="382.66" y1="106.67" x2="382.66" y2="146.67" stroke="#1c5480" stroke-width="1"/>
+<line x1="598.15" y1="106.67" x2="598.15" y2="146.67" stroke="#1c5480" stroke-width="2.5"/>
+</g>
+</g>
+<text x="450" y="545" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">drive type</text>
+<g transform="translate(26.56,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">displacement</text>
+</g>
+</g>
+</svg>

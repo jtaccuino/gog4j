@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M643.5 280 A207 207 0 0 1 229.50 280 A207 207 0 0 1 643.50 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h773v460h-773Z"/></clipPath>
+<clipPath id="clip2"><path d="M50 50h773v460h-773Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">28. Radar by Cylinder Group</text>
+<text x="842.56" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">Cylinders</text>
+<rect x="842.56" y="82" width="14" height="14" fill="none" stroke="#cccccc" stroke-width="0.5"/>
+<circle cx="849.56" cy="89" r="2.5" fill="#1f77b4" stroke="#16537e" stroke-width="0.5"/>
+<text x="864.56" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">4 cyl</text>
+<rect x="842.56" y="102" width="14" height="14" fill="none" stroke="#cccccc" stroke-width="0.5"/>
+<circle cx="849.56" cy="109" r="2.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="0.5"/>
+<text x="864.56" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">6 cyl</text>
+<rect x="842.56" y="122" width="14" height="14" fill="none" stroke="#cccccc" stroke-width="0.5"/>
+<circle cx="849.56" cy="129" r="2.5" fill="#2ca02c" stroke="#1f701f" stroke-width="0.5"/>
+<text x="864.56" y="132" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">8 cyl</text>
+<rect x="50" y="50" width="773" height="460" fill="#ebebeb"/>
+<ellipse cx="436.5" cy="280" rx="44.43" ry="44.43" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="436.5" cy="280" rx="105.28" ry="105.28" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="436.5" cy="280" rx="166.13" ry="166.13" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="436.5" y1="280" x2="540" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="540" y1="100.73" x2="542" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="549" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">disp</text>
+<line x1="436.5" y1="280" x2="643.5" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="643.5" y1="280" x2="647.5" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="661.5" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">drat</text>
+<line x1="436.5" y1="280" x2="540" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="540" y1="459.27" x2="542" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="549" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">hp</text>
+<line x1="436.5" y1="280" x2="333" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="333" y1="459.27" x2="331" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="324" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">mpg</text>
+<line x1="436.5" y1="280" x2="229.5" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="229.5" y1="280" x2="225.5" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="211.5" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">qsec</text>
+<line x1="436.5" y1="280" x2="333" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="333" y1="100.73" x2="331" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="324" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">wt</text>
+<ellipse cx="436.5" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="235.57" x2="45" y2="235.57" stroke="#333333" stroke-width="1"/>
+<text x="40" y="239.57" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.20</text>
+<line x1="50" y1="174.72" x2="45" y2="174.72" stroke="#333333" stroke-width="1"/>
+<text x="40" y="178.72" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.40</text>
+<line x1="50" y1="113.87" x2="45" y2="113.87" stroke="#333333" stroke-width="1"/>
+<text x="40" y="117.87" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.60</text>
+<g transform="translate(13.6,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Normalised value</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<polygon points="441.2,271.85 603.88,280 444.76,294.3 339.43,448.13 284.96,280 414.65,242.16 441.2,271.85" fill="#1f77b4" fill-opacity="0.3"/>
+<polygon points="441.2,271.85 603.88,280 444.76,294.3 339.43,448.13 284.96,280 414.65,242.16 441.2,271.85" fill="none" stroke="#16537e" stroke-width="1.6"/>
+<polygon points="470.87,220.47 535.85,280 466.07,331.22 384.23,370.53 326.98,280 382.32,186.15 470.87,220.47" fill="#ff7f0e" fill-opacity="0.3"/>
+<polygon points="470.87,220.47 535.85,280 466.07,331.22 384.23,370.53 326.98,280 382.32,186.15 470.87,220.47" fill="none" stroke="#b2590a" stroke-width="1.6"/>
+<polygon points="535.3,108.88 485.88,280 512.8,412.15 414.29,318.48 370.62,280 348.01,126.72 535.3,108.88" fill="#2ca02c" fill-opacity="0.3"/>
+<polygon points="535.3,108.88 485.88,280 512.8,412.15 414.29,318.48 370.62,280 348.01,126.72 535.3,108.88" fill="none" stroke="#1f701f" stroke-width="1.6"/>
+</g>
+<g clip-path="url(#clip2)">
+<circle cx="339.43" cy="448.13" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="384.23" cy="370.53" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="414.29" cy="318.48" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<circle cx="444.76" cy="294.3" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="466.07" cy="331.22" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="512.8" cy="412.15" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<circle cx="441.2" cy="271.85" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="470.87" cy="220.47" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="535.3" cy="108.88" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<circle cx="414.65" cy="242.16" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="382.32" cy="186.15" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="348.01" cy="126.72" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<circle cx="603.88" cy="280" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="535.85" cy="280" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="485.88" cy="280" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+<circle cx="284.96" cy="280" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="326.98" cy="280" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="370.62" cy="280" r="4.5" fill="#2ca02c" stroke="#1f701f" stroke-width="1"/>
+</g>
+</g>
+</svg>

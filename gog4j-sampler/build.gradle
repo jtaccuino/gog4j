@@ -1,0 +1,41 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Sampler v2: a filterable browser for the gog4j example gallery'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j-controls')
+    implementation project(':gog4j-sampler-annotations')
+    implementation project(':gog4j-examples-dflib')
+    implementation project(':gog4j-examples-hardwood')
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:jfx-incubator-richtext:${incubatorVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:jfx-incubator-input:${incubatorVersion}:${inputFxPlatform}"
+
+    testImplementation testFixtures(project(':gog4j'))
+}
+
+// Runs the sampler JavaFX demo: ./gradlew :gog4j-sampler:runSampler
+tasks.register('runSampler', JavaExec) {
+    group = 'application'
+    description = 'Runs the Gog4jSampler JavaFX demo'
+    mainClass = 'org.jtaccuino.gog.sampler.SamplerApp'
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs "--module-path=${javafxModulePath()}", '--add-modules=javafx.controls,jfx.incubator.richtext,jfx.incubator.input'
+    jvmArgs '-Dprism.maxvram=2G'
+    jvmArgs jfrStartRecordingArgs(project)
+}
+
+// The UI modules expose many public members whose prose docs are not yet
+// complete; keep doclint's reference/syntax/html checks (still -Werror) but do
+// not fail the build on missing comments.
+tasks.named('javadoc') {
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+}

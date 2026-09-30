@@ -1,0 +1,18 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Hardwood backend for gog4j: a DataExtractor that renders Hardwood Parquet tables'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j')
+    api platform("dev.hardwood:hardwood-bom:${hardwoodVersion}")
+    api 'dev.hardwood:hardwood-core'
+    // Hardwood treats compression codecs as optional; the bundled datasets are
+    // ZSTD-compressed, so the codec must be on the runtime classpath.
+    runtimeOnly 'com.github.luben:zstd-jni'
+}

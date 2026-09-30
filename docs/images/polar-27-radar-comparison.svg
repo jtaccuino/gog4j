@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M631.5 280 A207 207 0 0 1 217.50 280 A207 207 0 0 1 631.50 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h749v460h-749Z"/></clipPath>
+<clipPath id="clip2"><path d="M50 50h749v460h-749Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">27. Radar Comparison (two cars)</text>
+<text x="819" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">Car</text>
+<rect x="819" y="82" width="14" height="14" fill="none" stroke="#cccccc" stroke-width="0.5"/>
+<circle cx="826" cy="89" r="2.5" fill="#1f77b4" stroke="#16537e" stroke-width="0.5"/>
+<text x="841" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Duster 360</text>
+<rect x="819" y="102" width="14" height="14" fill="none" stroke="#cccccc" stroke-width="0.5"/>
+<circle cx="826" cy="109" r="2.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="0.5"/>
+<text x="841" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Mazda RX4</text>
+<rect x="50" y="50" width="749" height="460" fill="#ebebeb"/>
+<ellipse cx="424.5" cy="280" rx="22.98" ry="22.98" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="424.5" cy="280" rx="90.06" ry="90.06" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="424.5" cy="280" rx="157.13" ry="157.13" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="424.5" y1="280" x2="528" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="528" y1="100.73" x2="530" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="537" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">disp</text>
+<line x1="424.5" y1="280" x2="631.5" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="631.5" y1="280" x2="635.5" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="649.5" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">drat</text>
+<line x1="424.5" y1="280" x2="528" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="528" y1="459.27" x2="530" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="537" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">hp</text>
+<line x1="424.5" y1="280" x2="321" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="321" y1="459.27" x2="319" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="312" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">mpg</text>
+<line x1="424.5" y1="280" x2="217.5" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="217.5" y1="280" x2="213.5" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="199.5" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">qsec</text>
+<line x1="424.5" y1="280" x2="321" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="321" y1="100.73" x2="319" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="312" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">wt</text>
+<ellipse cx="424.5" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="257.02" x2="45" y2="257.02" stroke="#333333" stroke-width="1"/>
+<text x="40" y="261.02" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.20</text>
+<line x1="50" y1="189.94" x2="45" y2="189.94" stroke="#333333" stroke-width="1"/>
+<text x="40" y="193.94" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.40</text>
+<line x1="50" y1="122.87" x2="45" y2="122.87" stroke="#333333" stroke-width="1"/>
+<text x="40" y="126.87" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.60</text>
+<g transform="translate(13.6,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Normalised value</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<polygon points="439.64,253.78 556.6,280 436.82,301.34 370.91,372.82 390.34,280 399.08,235.97 439.64,253.78" fill="#ff7f0e" fill-opacity="0.35"/>
+<polygon points="439.64,253.78 556.6,280 436.82,301.34 370.91,372.82 390.34,280 399.08,235.97 439.64,253.78" fill="none" stroke="#b2590a" stroke-width="1.6"/>
+<polygon points="523.3,108.88 449.96,280 516.81,439.89 418.72,290.02 415.09,280 358.35,165.42 523.3,108.88" fill="#1f77b4" fill-opacity="0.35"/>
+<polygon points="523.3,108.88 449.96,280 516.81,439.89 418.72,290.02 415.09,280 358.35,165.42 523.3,108.88" fill="none" stroke="#16537e" stroke-width="1.6"/>
+</g>
+<g clip-path="url(#clip2)">
+<circle cx="370.91" cy="372.82" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="418.72" cy="290.02" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="436.82" cy="301.34" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="516.81" cy="439.89" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="439.64" cy="253.78" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="523.3" cy="108.88" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="399.08" cy="235.97" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="358.35" cy="165.42" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="556.6" cy="280" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="449.96" cy="280" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+<circle cx="390.34" cy="280" r="4.5" fill="#ff7f0e" stroke="#b2590a" stroke-width="1"/>
+<circle cx="415.09" cy="280" r="4.5" fill="#1f77b4" stroke="#16537e" stroke-width="1"/>
+</g>
+</g>
+</svg>

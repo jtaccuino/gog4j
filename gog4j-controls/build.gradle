@@ -1,0 +1,29 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Reusable JavaFX controls for gog4j (plot card, source view, themes)'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j')
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+    // The OpenJFX Incubator rich-text module backs the highlighted source view;
+    // jfx-incubator-input is its (also classified) companion.
+    javafx "org.openjfx:jfx-incubator-richtext:${incubatorVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:jfx-incubator-input:${incubatorVersion}:${inputFxPlatform}"
+
+    testImplementation testFixtures(project(':gog4j'))
+}
+
+// The UI modules expose many public members whose prose docs are not yet
+// complete; keep doclint's reference/syntax/html checks (still -Werror) but do
+// not fail the build on missing comments.
+tasks.named('javadoc') {
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+}

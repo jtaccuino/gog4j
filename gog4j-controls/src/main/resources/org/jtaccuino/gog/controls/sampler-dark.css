@@ -1,0 +1,80 @@
+/* Dark theme for the sampler chrome, plot cards, plots and controls. Applied
+ * when the sampler's root carries the `.sampler-dark` style class; the
+ * higher-specificity selectors here override the base sampler.css rules. */
+
+.sampler-dark {
+    -fx-background-color: #2b2b2b;
+}
+
+.sampler-dark .sampler-filter-bar {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: transparent transparent #4a4d50 transparent;
+}
+
+.sampler-dark .sampler-filter-label {
+    -fx-text-fill: #a9b7c6;
+}
+
+.sampler-dark .sampler-status-label {
+    -fx-text-fill: #9a9a9a;
+}
+
+.sampler-dark .sampler-count-label {
+    -fx-text-fill: #9a9a9a;
+}
+
+.sampler-dark .sampler-clear-all {
+    -fx-text-fill: #a9a9a9;
+}
+
+.sampler-dark .sampler-card {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #4a4d50;
+}
+
+.sampler-dark .sampler-card-title {
+    -fx-text-fill: #d5d5d5;
+}
+
+.sampler-dark .sampler-card-description {
+    -fx-text-fill: #a9b7c6;
+}
+
+.sampler-dark .sampler-card-failure {
+    -fx-text-fill: #ff8080;
+}
+
+.sampler-dark .sampler-card-timing {
+    -fx-text-fill: #9a9a9a;
+}
+
+.sampler-dark .sampler-card-loading {
+    -fx-text-fill: #9a9a9a;
+}
+
+.sampler-dark .sampler-plot-backdrop {
+    -fx-background-color: #3c3f41;
+}
+
+.sampler-dark .sampler-placeholder {
+    -fx-text-fill: #9a9a9a;
+}
+
+.sampler-dark .list-view {
+    -fx-background-color: #2b2b2b;
+}
+
+.sampler-dark .list-cell {
+    -fx-background-color: transparent;
+}
+
+.sampler-dark .text-field,
+.sampler-dark .combo-box {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #a9b7c6;
+    -fx-prompt-text-fill: #6a6a6a;
+}
+
+.sampler-dark .combo-box .arrow {
+    -fx-background-color: #a9b7c6;
+}

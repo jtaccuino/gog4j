@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M657 280 A207 207 0 0 1 243 280 A207 207 0 0 1 657 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h800v460h-800Z"/></clipPath>
+<clipPath id="clip2"><path d="M50 50h800v460h-800Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">26. Radar Profile (Geoms.polygon + coordPolar)</text>
+<rect x="50" y="50" width="800" height="460" fill="#ebebeb"/>
+<ellipse cx="450" cy="280" rx="6.5" ry="6.5" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="65.24" ry="65.24" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="123.97" ry="123.97" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="182.7" ry="182.7" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="450" y1="280" x2="553.5" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="553.5" y1="100.73" x2="555.5" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="562.5" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">disp</text>
+<line x1="450" y1="280" x2="657" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="657" y1="280" x2="661" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="675" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">drat</text>
+<line x1="450" y1="280" x2="553.5" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="553.5" y1="459.27" x2="555.5" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="562.5" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">hp</text>
+<line x1="450" y1="280" x2="346.5" y2="459.27" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="346.5" y1="459.27" x2="344.5" y2="462.73" stroke="#333333" stroke-width="1"/>
+<text x="337.5" y="474.86" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">mpg</text>
+<line x1="450" y1="280" x2="243" y2="280" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="243" y1="280" x2="239" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="225" y="280" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">qsec</text>
+<line x1="450" y1="280" x2="346.5" y2="100.73" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="346.5" y1="100.73" x2="344.5" y2="97.27" stroke="#333333" stroke-width="1"/>
+<text x="337.5" y="85.14" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">wt</text>
+<ellipse cx="450" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="273.5" x2="45" y2="273.5" stroke="#333333" stroke-width="1"/>
+<text x="40" y="277.5" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.20</text>
+<line x1="50" y1="214.76" x2="45" y2="214.76" stroke="#333333" stroke-width="1"/>
+<text x="40" y="218.76" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.30</text>
+<line x1="50" y1="156.03" x2="45" y2="156.03" stroke="#333333" stroke-width="1"/>
+<text x="40" y="160.03" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.40</text>
+<line x1="50" y1="97.3" x2="45" y2="97.3" stroke="#333333" stroke-width="1"/>
+<text x="40" y="101.3" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0.50</text>
+<g transform="translate(13.71,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Normalised value</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<polygon points="459.64,263.3 647.59,280 454.7,288.15 373.02,413.34 423.92,280 422.36,232.13 459.64,263.3" fill="#333333" fill-opacity="0.5"/>
+<polygon points="459.64,263.3 647.59,280 454.7,288.15 373.02,413.34 423.92,280 422.36,232.13 459.64,263.3" fill="none" stroke="#242424" stroke-width="1.6"/>
+</g>
+<g clip-path="url(#clip2)">
+<g fill="#e31a1c" stroke="#9f1214" stroke-width="1"><circle cx="373.02" cy="413.34" r="4.5"/><circle cx="454.7" cy="288.15" r="4.5"/><circle cx="459.64" cy="263.3" r="4.5"/><circle cx="422.36" cy="232.13" r="4.5"/><circle cx="647.59" cy="280" r="4.5"/><circle cx="423.92" cy="280" r="4.5"/></g>
+</g>
+</g>
+</svg>

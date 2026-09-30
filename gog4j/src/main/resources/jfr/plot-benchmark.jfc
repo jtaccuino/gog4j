@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  JFR settings for plotting benchmarks. Enables only the JTaccuino gog events
+  (plus the JVM's own "jdk.JavaMonitorEnter" / allocation events are left
+  disabled) with zero threshold so every render pass is recorded with its full
+  timing breakdown.
+
+  Enable with:
+    -XX:StartFlightRecording=settings=plot-benchmark.jfc,filename=plot.jfr
+-->
+<configuration version="2.0" label="Plot Benchmark" description="Enables gog plotting events for JFR recording" provider="JTaccuino">
+
+  <event name="org.jtaccuino.gog.jfr.PlotRender">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.PreparePhase">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.LayerPrepare">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.CellExtentCollection">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.PanelPrep">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.GuideCollection">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.Layout">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.FacetPanel">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.LayerRender">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.PointRender">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <event name="org.jtaccuino.gog.jfr.SmoothFit">
+    <setting name="enabled" control="plot-events">true</setting>
+    <setting name="threshold">0 ns</setting>
+    <setting name="stackTrace">false</setting>
+  </event>
+
+  <control>
+    <selection name="plot-events" default="true" label="Plot events">
+      <option label="Enabled" value="true"/>
+      <option label="Disabled" value="false"/>
+    </selection>
+  </control>
+
+</configuration>

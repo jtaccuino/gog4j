@@ -1,0 +1,6 @@
+// Aggregator build for the gog4j multi-project layout. Shared configuration
+// lives in the `gog4j.java-conventions` plugin under build-logic/; each module
+// applies it and declares only its own dependencies and tasks.
+plugins {
+    id 'com.autonomousapps.dependency-analysis' version '3.18.0'
+}

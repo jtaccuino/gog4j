@@ -1,0 +1,19 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Published example datasets (resources only) for gog4j'
+
+// Resources-only module: no Java sources, so no javadoc/sources content.
+tasks.named('compileJava') {
+    enabled = false
+}
+
+tasks.named('processResources') {
+    // The published upstream sources sit beside the demo data for provenance
+    // but are ~50 MB and must not enter the build; the derivation tooling (the
+    // shell script and its jbang script) is not a resource either.
+    exclude 'examples/gwas/upstream/**'
+    exclude 'examples/gwas/derive-demo-dataset.sh'
+    exclude 'examples/gwas/DeriveGwas.java'
+}

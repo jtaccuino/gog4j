@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="700" viewBox="0 0 900 700">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="700" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">light supplied on coord3d()</text>
+<polygon points="425.3,435.01 425.3,139.01 350.19,101.57 364.51,365.76" fill="#ff9c39"/>
+<polygon points="425.3,435.01 425.3,139.01 350.19,101.57 364.51,365.76" fill="none" stroke="#dd6d00" stroke-width="0.98"/>
+<polygon points="425.3,435.01 536.8,392.67 564.99,115.8 425.3,139.01" fill="#ff7f00"/>
+<polygon points="425.3,435.01 536.8,392.67 564.99,115.8 425.3,139.01" fill="none" stroke="#8a4400" stroke-width="0.99"/>
+<polygon points="425.3,139.01 564.99,115.8 475.57,85.02 350.19,101.57" fill="#ffb872"/>
+<polygon points="425.3,139.01 564.99,115.8 475.57,85.02 350.19,101.57" fill="none" stroke="#ff9731" stroke-width="1"/>
+<polygon points="357.96,600.3 339.37,355.39 263.18,264.89 292.42,485.47" fill="#ff9c39"/>
+<polygon points="357.96,600.3 339.37,355.39 263.18,264.89 292.42,485.47" fill="none" stroke="#dd6d00" stroke-width="1.06"/>
+<polygon points="357.96,600.3 507.8,529 527.66,298.25 339.37,355.39" fill="#ff7f00"/>
+<polygon points="357.96,600.3 507.8,529 527.66,298.25 339.37,355.39" fill="none" stroke="#8a4400" stroke-width="1.07"/>
+<polygon points="339.37,355.39 527.66,298.25 425.3,227.59 263.18,264.89" fill="#ffb872"/>
+<polygon points="339.37,355.39 527.66,298.25 425.3,227.59 263.18,264.89" fill="none" stroke="#ff9731" stroke-width="1.07"/>
+</svg>

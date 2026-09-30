@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M657 280 A207 207 0 0 1 243 280 A207 207 0 0 1 657 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h800v460h-800Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">1. Coxcomb (coordPolar)</text>
+<rect x="50" y="50" width="800" height="460" fill="#ebebeb"/>
+<ellipse cx="450" cy="280" rx="73.93" ry="73.93" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="147.86" ry="147.86" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="450" y1="280" x2="629.27" y2="176.5" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="629.27" y1="176.5" x2="632.73" y2="174.5" stroke="#333333" stroke-width="1"/>
+<text x="644.86" y="167.5" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">4</text>
+<line x1="450" y1="280" x2="450" y2="487" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="450" y1="487" x2="450" y2="491" stroke="#333333" stroke-width="1"/>
+<text x="450" y="505" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">6</text>
+<line x1="450" y1="280" x2="270.73" y2="176.5" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="270.73" y1="176.5" x2="267.27" y2="174.5" stroke="#333333" stroke-width="1"/>
+<text x="255.14" y="167.5" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">8</text>
+<ellipse cx="450" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="280" x2="45" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="40" y="284" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0</text>
+<line x1="50" y1="206.07" x2="45" y2="206.07" stroke="#333333" stroke-width="1"/>
+<text x="40" y="210.07" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">5</text>
+<line x1="50" y1="132.14" x2="45" y2="132.14" stroke="#333333" stroke-width="1"/>
+<text x="40" y="136.14" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">10</text>
+<g transform="translate(22.55,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Count</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<path d="M450 280 L449.29 117.36 A162.64 162.64 0 0 1 590.50 361.94 Z" fill="#9ecae1"/>
+<path d="M450 280 L539.86 331.36 A103.50 103.50 0 0 1 360.14 331.36 Z" fill="#9ecae1"/>
+<path d="M450 280 L271.19 384.28 A207 207 0 0 1 450.90 73 Z" fill="#9ecae1"/>
+</g>
+</g>
+</svg>

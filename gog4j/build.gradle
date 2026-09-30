@@ -1,0 +1,23 @@
+plugins {
+    id 'gog4j.java-conventions'
+    id 'java-test-fixtures'
+}
+
+description = 'A pure Java and JavaFX Grammar-of-Graphics plotting library'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+    implementation "org.apache.commons:commons-math4-core:${commonsMathVersion}"
+    implementation "org.apache.commons:commons-math4-legacy:${commonsMathVersion}"
+
+    // The shared JavaFX toolkit test extension lives in test fixtures so every
+    // module's render tests can reuse it.
+    testFixturesApi "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    configurations.testFixturesApi.extendsFrom(configurations.javafx)
+}

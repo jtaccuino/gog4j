@@ -1,0 +1,50 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Sample plots and demo applications built on the gog4j dflib backend'
+
+java {
+    withJavadocJar()
+}
+
+// The @SamplePlot annotation and the registry processor live in
+// :gog4j-sampler-annotations; this module only supplies the annotated factories.
+dependencies {
+    api project(':gog4j-dflib-data')
+    api project(':gog4j-sampler-annotations')
+    implementation project(':gog4j-dflib')
+    implementation "org.apache.commons:commons-math4-core:${commonsMathVersion}"
+    implementation "org.apache.commons:commons-math4-legacy:${commonsMathVersion}"
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+
+    // Run the processor while compiling main so the registry is generated.
+    annotationProcessor project(':gog4j-sampler-annotations')
+
+    testImplementation testFixtures(project(':gog4j'))
+}
+
+tasks.named('compileJava').configure {
+    // The annotation processor runs in a Gradle worker whose working directory
+    // is not the project dir; hand it the absolute source root so it can read
+    // the example sources and bake them into the generated registry resource.
+    options.compilerArgs.add('-Asampler.srcdir=' + project.file('src/main/java').absolutePath)
+    // JavaFX control annotations (@DefaultProperty, @IDProperty) are not
+    // claimed by our processor; silence the benign "not claimed" lint that
+    // -Werror would otherwise escalate.
+    options.compilerArgs.add('-Xlint:-processing')
+}
+
+// Renders the documentation figures: ./gradlew :gog4j-examples-dflib:exportDocs [-PdocsDir=...]
+tasks.register('exportDocs', JavaExec) {
+    group = 'documentation'
+    description = 'Renders documentation figures via PlotExporter'
+    mainClass = 'org.jtaccuino.gog.dflib.apps.PlotExporter'
+    classpath = sourceSets.main.runtimeClasspath
+    dependsOn 'processResources'
+    jvmArgs "--module-path=${javafxModulePath()}", '--add-modules=javafx.controls'
+    jvmArgs jfrStartRecordingArgs(project)
+    args = [project.findProperty('docsDir') ?: rootProject.file('docs/images').absolutePath]
+}

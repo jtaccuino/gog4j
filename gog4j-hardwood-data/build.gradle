@@ -1,0 +1,71 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Example datasets read with Hardwood: CSV converted to Parquet at build time'
+
+java {
+    withJavadocJar()
+}
+
+// The CSV fixtures live in :gog4j-data. The `converter` source set holds the
+// build-time CsvToParquet tool; its output is not published.
+sourceSets {
+    converter
+}
+
+dependencies {
+    api project(':gog4j-hardwood')
+    implementation project(':gog4j-data')
+
+    // The converter reads the demo CSVs (including the gzipped GWAS file) with
+    // DFLib and writes ZSTD Parquet with Hardwood's writer + zstd-jni.
+    converterImplementation project(':gog4j-hardwood')
+    converterImplementation project(':gog4j-data')
+    converterImplementation platform("org.dflib:dflib-bom:${dflibVersion}")
+    converterImplementation 'org.dflib:dflib-csv'
+    converterImplementation 'com.github.luben:zstd-jni'
+}
+
+// Datasets to convert: <name> <sourceFile> -> examples/<category>/<name>.parquet.
+def datasets = [
+        'diamonds' : 'diamonds.csv',
+        'penguins' : 'penguins.csv',
+        'tips'     : 'tips.csv',
+        'mtcars'   : 'mtcars.csv',
+        'gwas'     : 'height_gwas_thinned.csv.gz',
+        'gwas-lead': 'height_lead_snps.csv',
+]
+
+def datasetArgs = datasets.collect { name, file -> [name, file] }.flatten()
+
+def parquetDir = layout.buildDirectory.dir('generated/parquet')
+
+tasks.register('convertParquet', JavaExec) {
+    group = 'build'
+    description = 'Converts the bundled CSV datasets to ZSTD Parquet with Hardwood'
+    classpath = sourceSets.converter.runtimeClasspath
+    mainClass = 'org.jtaccuino.gog.hardwood.data.CsvToParquet'
+    args = [parquetDir.get().asFile.absolutePath] + datasetArgs
+    outputs.dir(parquetDir)
+    inputs.property('datasets', datasets)
+    inputs.files(rootProject.fileTree('gog4j-data/src/main/resources/examples') {
+        include '**/*.csv', '**/*.csv.gz'
+    })
+}
+
+// Fold the generated Parquet into the module resources so the loaders can read
+// it from the classpath. Referring to the task provider contributes its declared
+// outputs and an implicit task dependency, rather than registering the generated
+// directory as a source (which would make sourcesJar treat the binaries as
+// sources).
+tasks.named('processResources') {
+    from(tasks.named('convertParquet'))
+}
+
+// The converter is build tooling, not shipped API; exempt it from the strict
+// lint/errorprone policy that governs the runtime and test sources.
+tasks.named('compileConverterJava').configure {
+    options.compilerArgs.remove('-Werror')
+    options.compilerArgs.removeAll { it.contains('ErrorProne') }
+}

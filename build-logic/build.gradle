@@ -1,0 +1,16 @@
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+repositories {
+    gradlePluginPortal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.diffplug.spotless:spotless-plugin-gradle:8.10.0'
+    implementation 'net.ltgt.gradle:gradle-errorprone-plugin:5.1.0'
+    implementation 'com.google.gradle:osdetector-gradle-plugin:1.7.3'
+    implementation 'io.github.ben-manes:gradle-versions-plugin:0.61.0'
+    implementation 'com.autonomousapps:dependency-analysis-gradle-plugin:3.18.0'
+}

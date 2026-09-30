@@ -1,0 +1,15 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'dflib backend for gog4j: a DataExtractor that renders dflib DataFrames'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j')
+    api platform("org.dflib:dflib-bom:${dflibVersion}")
+    api 'org.dflib:dflib'
+}

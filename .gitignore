@@ -1,0 +1,8 @@
+target/
+**/.gradle/
+**/build/
+perf.html
+.vscode/
+.DS_Store
+.project
+**/bin/

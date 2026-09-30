@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M633.5 280 A207 207 0 0 1 219.50 280 A207 207 0 0 1 633.50 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h753v460h-753Z"/></clipPath>
+<clipPath id="clip2"><path d="M50 50h753v460h-753Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">19. Significance Ring (Geoms.hline on the rose)</text>
+<text x="823.36" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">Cut</text>
+<rect x="823.36" y="82" width="14" height="14" fill="#1f77b4" fill-opacity="0.85"/>
+<rect x="823.36" y="82" width="14" height="14" fill="none" stroke="#16537e" stroke-width="0.5"/>
+<text x="845.36" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Fair</text>
+<rect x="823.36" y="102" width="14" height="14" fill="#ff7f0e" fill-opacity="0.85"/>
+<rect x="823.36" y="102" width="14" height="14" fill="none" stroke="#b2590a" stroke-width="0.5"/>
+<text x="845.36" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Good</text>
+<rect x="823.36" y="122" width="14" height="14" fill="#2ca02c" fill-opacity="0.85"/>
+<rect x="823.36" y="122" width="14" height="14" fill="none" stroke="#1f701f" stroke-width="0.5"/>
+<text x="845.36" y="132" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Ideal</text>
+<rect x="823.36" y="142" width="14" height="14" fill="#d62728" fill-opacity="0.85"/>
+<rect x="823.36" y="142" width="14" height="14" fill="none" stroke="#961b1c" stroke-width="0.5"/>
+<text x="845.36" y="152" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Premium</text>
+<rect x="823.36" y="162" width="14" height="14" fill="#9467bd" fill-opacity="0.85"/>
+<rect x="823.36" y="162" width="14" height="14" fill="none" stroke="#684884" stroke-width="0.5"/>
+<text x="845.36" y="172" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">Very Good</text>
+<rect x="50" y="50" width="753" height="460" fill="#ebebeb"/>
+<ellipse cx="426.5" cy="280" rx="79.22" ry="79.22" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="426.5" cy="280" rx="158.44" ry="158.44" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="426.5" y1="280" x2="505.72" y2="88.76" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="505.72" y1="88.76" x2="507.25" y2="85.06" stroke="#333333" stroke-width="1"/>
+<text x="512.6" y="72.13" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">I1</text>
+<line x1="426.5" y1="280" x2="617.74" y2="200.78" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="617.74" y1="200.78" x2="621.44" y2="199.25" stroke="#333333" stroke-width="1"/>
+<text x="634.37" y="193.9" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">IF</text>
+<line x1="426.5" y1="280" x2="617.74" y2="359.22" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="617.74" y1="359.22" x2="621.44" y2="360.75" stroke="#333333" stroke-width="1"/>
+<text x="634.37" y="366.1" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">SI1</text>
+<line x1="426.5" y1="280" x2="505.72" y2="471.24" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="505.72" y1="471.24" x2="507.25" y2="474.94" stroke="#333333" stroke-width="1"/>
+<text x="512.6" y="487.87" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">SI2</text>
+<line x1="426.5" y1="280" x2="347.28" y2="471.24" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="347.28" y1="471.24" x2="345.75" y2="474.94" stroke="#333333" stroke-width="1"/>
+<text x="340.4" y="487.87" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">VS1</text>
+<line x1="426.5" y1="280" x2="235.26" y2="359.22" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="235.26" y1="359.22" x2="231.56" y2="360.75" stroke="#333333" stroke-width="1"/>
+<text x="218.63" y="366.1" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">VS2</text>
+<line x1="426.5" y1="280" x2="235.26" y2="200.78" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="235.26" y1="200.78" x2="231.56" y2="199.25" stroke="#333333" stroke-width="1"/>
+<text x="218.63" y="193.9" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">VVS1</text>
+<line x1="426.5" y1="280" x2="347.28" y2="88.76" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="347.28" y1="88.76" x2="345.75" y2="85.06" stroke="#333333" stroke-width="1"/>
+<text x="340.4" y="72.13" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">VVS2</text>
+<ellipse cx="426.5" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="280" x2="45" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="40" y="284" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0</text>
+<line x1="50" y1="200.78" x2="45" y2="200.78" stroke="#333333" stroke-width="1"/>
+<text x="40" y="204.78" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">5000</text>
+<line x1="50" y1="121.56" x2="45" y2="121.56" stroke="#333333" stroke-width="1"/>
+<text x="40" y="125.56" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">10000</text>
+<g transform="translate(6.18,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Count</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<path d="M426.5 280 L426.49 276.67 A3.33 3.33 0 0 1 428.86 277.66 Z" fill="#1f77b4"/>
+<path d="M426.48 275.15 A4.85 4.85 0 0 1 429.94 276.59 L428.86 277.66 A3.33 3.33 0 0 0 426.49 276.67 Z" fill="#ff7f0e"/>
+<path d="M426.47 272.84 A7.16 7.16 0 0 1 431.59 274.96 L429.94 276.59 A4.85 4.85 0 0 0 426.48 275.15 Z" fill="#2ca02c"/>
+<path d="M426.45 269.59 A10.41 10.41 0 0 1 433.89 272.67 L431.59 274.96 A7.16 7.16 0 0 0 426.47 272.84 Z" fill="#d62728"/>
+<path d="M426.45 268.26 A11.74 11.74 0 0 1 434.84 271.73 L433.89 272.67 A10.41 10.41 0 0 0 426.45 269.59 Z" fill="#9467bd"/>
+<path d="M426.5 280 L431.74 285.2 A7.38 7.38 0 0 1 426.47 287.38 Z" fill="#1f77b4"/>
+<path d="M443.91 297.26 A24.51 24.51 0 0 1 426.39 304.51 L426.47 287.38 A7.38 7.38 0 0 0 431.74 285.20 Z" fill="#ff7f0e"/>
+<path d="M473.14 326.23 A65.67 65.67 0 0 1 426.21 345.67 L426.39 304.51 A24.51 24.51 0 0 0 443.91 297.26 Z" fill="#2ca02c"/>
+<path d="M506.32 359.13 A112.40 112.40 0 0 1 426.01 392.40 L426.21 345.67 A65.67 65.67 0 0 0 473.14 326.23 Z" fill="#d62728"/>
+<path d="M529.95 382.55 A145.67 145.67 0 0 1 425.86 425.67 L426.01 392.4 A112.40 112.40 0 0 0 506.32 359.13 Z" fill="#9467bd"/>
+<path d="M426.5 280 L432.96 279.97 A6.46 6.46 0 0 1 431.05 284.59 Z" fill="#1f77b4"/>
+<path d="M457.68 279.86 A31.18 31.18 0 0 1 448.45 302.14 L431.05 284.59 A6.46 6.46 0 0 0 432.96 279.97 Z" fill="#ff7f0e"/>
+<path d="M525.52 279.57 A99.02 99.02 0 0 1 496.21 350.33 L448.45 302.14 A31.18 31.18 0 0 0 457.68 279.86 Z" fill="#2ca02c"/>
+<path d="M582.16 279.32 A155.67 155.67 0 0 1 536.09 390.55 L496.21 350.33 A99.02 99.02 0 0 0 525.52 279.57 Z" fill="#d62728"/>
+<path d="M633.5 279.1 A207 207 0 0 1 572.23 427.01 L536.09 390.55 A155.67 155.67 0 0 0 582.16 279.32 Z" fill="#9467bd"/>
+<path d="M426.5 280 L423.59 282.94 A4.14 4.14 0 0 1 422.36 279.98 Z" fill="#1f77b4"/>
+<path d="M412.68 293.94 A19.63 19.63 0 0 1 406.87 279.91 L422.36 279.98 A4.14 4.14 0 0 0 423.59 282.94 Z" fill="#ff7f0e"/>
+<path d="M356.12 351 A99.97 99.97 0 0 1 326.53 279.56 L406.87 279.91 A19.63 19.63 0 0 0 412.68 293.94 Z" fill="#2ca02c"/>
+<path d="M318.67 388.77 A153.16 153.16 0 0 1 273.34 279.33 L326.53 279.56 A99.97 99.97 0 0 0 356.12 351 Z" fill="#d62728"/>
+<path d="M289.77 417.93 A194.21 194.21 0 0 1 232.29 279.15 L273.34 279.33 A153.16 153.16 0 0 0 318.67 388.77 Z" fill="#9467bd"/>
+<path d="M426.5 280 L426.51 282.69 A2.69 2.69 0 0 1 424.59 281.90 Z" fill="#1f77b4"/>
+<path d="M426.56 292.96 A12.96 12.96 0 0 1 417.30 289.12 L424.59 281.9 A2.69 2.69 0 0 0 426.51 282.69 Z" fill="#ff7f0e"/>
+<path d="M426.8 349.82 A69.82 69.82 0 0 1 376.91 329.16 L417.3 289.12 A12.96 12.96 0 0 0 426.56 292.96 Z" fill="#2ca02c"/>
+<path d="M426.94 381.34 A101.34 101.34 0 0 1 354.53 351.34 L376.91 329.16 A69.82 69.82 0 0 0 426.80 349.82 Z" fill="#d62728"/>
+<path d="M427.06 409.46 A129.46 129.46 0 0 1 334.56 371.14 L354.53 351.34 A101.34 101.34 0 0 0 426.94 381.34 Z" fill="#9467bd"/>
+<path d="M426.5 280 L425.72 279.23 A1.09 1.09 0 0 1 426.50 278.91 Z" fill="#1f77b4"/>
+<path d="M422.51 276.04 A5.62 5.62 0 0 1 426.52 274.38 L426.5 278.91 A1.09 1.09 0 0 0 425.72 279.23 Z" fill="#ff7f0e"/>
+<path d="M393.18 246.97 A46.91 46.91 0 0 1 426.70 233.09 L426.52 274.38 A5.62 5.62 0 0 0 422.51 276.04 Z" fill="#2ca02c"/>
+<path d="M383.39 237.27 A60.70 60.70 0 0 1 426.76 219.30 L426.7 233.09 A46.91 46.91 0 0 0 393.18 246.97 Z" fill="#d62728"/>
+<path d="M369.5 223.49 A80.26 80.26 0 0 1 426.85 199.74 L426.76 219.3 A60.70 60.70 0 0 0 383.39 237.27 Z" fill="#9467bd"/>
+<path d="M426.5 280 L426.23 280 A0.27 0.27 0 0 1 426.31 279.81 Z" fill="#1f77b4"/>
+<path d="M426.5 280 L423.28 280.01 A3.22 3.22 0 0 1 424.24 277.72 Z" fill="#ff7f0e"/>
+<path d="M390.85 280.16 A35.65 35.65 0 0 1 401.40 254.68 L424.24 277.72 A3.22 3.22 0 0 0 423.28 280.01 Z" fill="#2ca02c"/>
+<path d="M381.09 280.2 A45.41 45.41 0 0 1 394.53 247.75 L401.4 254.68 A35.65 35.65 0 0 0 390.85 280.16 Z" fill="#d62728"/>
+<path d="M368.59 280.25 A57.91 57.91 0 0 1 385.73 238.87 L394.53 247.75 A45.41 45.41 0 0 0 381.09 280.20 Z" fill="#9467bd"/>
+<path d="M426.5 280 L426.6 279.9 A0.14 0.14 0 0 1 426.64 280 Z" fill="#1f77b4"/>
+<path d="M426.5 280 L427.39 279.1 A1.27 1.27 0 0 1 427.77 280.01 Z" fill="#ff7f0e"/>
+<path d="M440.91 265.46 A20.47 20.47 0 0 1 446.97 280.09 L427.77 280.01 A1.27 1.27 0 0 0 427.39 279.10 Z" fill="#2ca02c"/>
+<path d="M443.48 262.87 A24.11 24.11 0 0 1 450.61 280.11 L446.97 280.09 A20.47 20.47 0 0 0 440.91 265.46 Z" fill="#d62728"/>
+<path d="M446.47 259.86 A28.36 28.36 0 0 1 454.86 280.12 L450.61 280.11 A24.11 24.11 0 0 0 443.48 262.87 Z" fill="#9467bd"/>
+</g>
+<g clip-path="url(#clip2)">
+<ellipse cx="426.5" cy="280" rx="15.84" ry="15.84" fill="none" stroke="#d62728" stroke-width="1.3" stroke-dasharray="6,4"/>
+<text x="426.5" y="259.16" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="3" stroke-linejoin="round" paint-order="stroke">1,000 diamonds</text>
+<text x="426.5" y="259.16" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#d62728" paint-order="stroke">1,000 diamonds</text>
+</g>
+</g>
+</svg>

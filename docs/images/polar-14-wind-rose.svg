@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M657 280 A207 207 0 0 1 243 280 A207 207 0 0 1 657 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h800v460h-800Z"/></clipPath>
+<clipPath id="clip2"><path d="M50 50h800v460h-800Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">14. Wind Rose (rotateAngle = TRUE)</text>
+<rect x="50" y="50" width="800" height="460" fill="#ebebeb"/>
+<ellipse cx="450" cy="280" rx="59.02" ry="59.02" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="118.03" ry="118.03" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="450" cy="280" rx="177.05" ry="177.05" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="280" x2="45" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="40" y="284" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0</text>
+<line x1="50" y1="220.98" x2="45" y2="220.98" stroke="#333333" stroke-width="1"/>
+<text x="40" y="224.98" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">10</text>
+<line x1="50" y1="161.97" x2="45" y2="161.97" stroke="#333333" stroke-width="1"/>
+<text x="40" y="165.97" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">20</text>
+<line x1="50" y1="102.95" x2="45" y2="102.95" stroke="#333333" stroke-width="1"/>
+<text x="40" y="106.95" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">30</text>
+<g transform="translate(21.22,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">MPG</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<path d="M450 280 L426.35 401.66 A123.93 123.93 0 0 1 402.07 394.29 Z" fill="#3182bd"/>
+<path d="M450 280 L403.07 394.71 A123.93 123.93 0 0 1 380.70 382.75 Z" fill="#3182bd"/>
+<path d="M450 280 L544.73 184.44 A134.56 134.56 0 0 1 562.21 205.73 Z" fill="#3182bd"/>
+<path d="M450 280 L539.69 368.91 A126.30 126.30 0 0 1 519.71 385.32 Z" fill="#3182bd"/>
+<path d="M450 280 L511.71 371.49 A110.36 110.36 0 0 1 491.79 382.14 Z" fill="#3182bd"/>
+<path d="M450 280 L408.69 181.49 A106.82 106.82 0 0 1 429.62 175.14 Z" fill="#3182bd"/>
+<path d="M450 280 L527.83 247.36 A84.39 84.39 0 0 1 532.84 263.90 Z" fill="#3182bd"/>
+<path d="M450 280 L348.62 382.27 A144 144 0 0 1 329.92 359.48 Z" fill="#3182bd"/>
+<path d="M450 280 L375.73 392.21 A134.56 134.56 0 0 1 354.44 374.73 Z" fill="#3182bd"/>
+<path d="M450 280 L356.06 343.36 A113.31 113.31 0 0 1 345.13 322.91 Z" fill="#3182bd"/>
+<path d="M450 280 L353.12 320.62 A105.05 105.05 0 0 1 346.88 300.04 Z" fill="#3182bd"/>
+<path d="M450 280 L355.16 299.3 A96.79 96.79 0 0 1 353.21 279.58 Z" fill="#3182bd"/>
+<path d="M450 280 L347.9 280.45 A102.10 102.10 0 0 1 349.95 259.64 Z" fill="#3182bd"/>
+<path d="M450 280 L361.94 262.88 A89.70 89.70 0 0 1 367.27 245.31 Z" fill="#3182bd"/>
+<path d="M450 280 L461.71 219.75 A61.38 61.38 0 0 1 473.74 223.40 Z" fill="#3182bd"/>
+<path d="M450 280 L473.74 336.6 A61.38 61.38 0 0 1 461.71 340.25 Z" fill="#3182bd"/>
+<path d="M450 280 L497.88 207.66 A86.75 86.75 0 0 1 511.61 218.92 Z" fill="#3182bd"/>
+<path d="M450 280 L641.21 279.17 A191.21 191.21 0 0 1 637.37 318.12 Z" fill="#3182bd"/>
+<path d="M450 280 L599.61 379.02 A179.41 179.41 0 0 1 576.31 407.41 Z" fill="#3182bd"/>
+<path d="M450 280 L307.92 139.15 A200.07 200.07 0 0 1 339.58 113.17 Z" fill="#3182bd"/>
+<path d="M450 280 L379.05 174.81 A126.89 126.89 0 0 1 401.96 162.56 Z" fill="#3182bd"/>
+<path d="M450 280 L525.84 228.85 A91.48 91.48 0 0 1 534.66 245.36 Z" fill="#3182bd"/>
+<path d="M450 280 L449.61 190.3 A89.70 89.70 0 0 1 467.88 192.10 Z" fill="#3182bd"/>
+<path d="M450 280 L479.72 207.35 A78.49 78.49 0 0 1 493.89 214.93 Z" fill="#3182bd"/>
+<path d="M450 280 L345.13 237.09 A113.31 113.31 0 0 1 356.06 216.64 Z" fill="#3182bd"/>
+<path d="M450 280 L608.15 310.74 A161.11 161.11 0 0 1 598.58 342.30 Z" fill="#3182bd"/>
+<path d="M450 280 L322.05 195.31 A153.44 153.44 0 0 1 341.97 171.03 Z" fill="#3182bd"/>
+<path d="M450 280 L485.77 455.81 A179.41 179.41 0 0 1 449.22 459.41 Z" fill="#3182bd"/>
+<path d="M450 280 L536.3 315.31 A93.25 93.25 0 0 1 527.30 332.14 Z" fill="#3182bd"/>
+<path d="M450 280 L563.93 256.82 A116.26 116.26 0 0 1 566.26 280.51 Z" fill="#3182bd"/>
+<path d="M450 280 L450.39 368.52 A88.52 88.52 0 0 1 432.35 366.75 Z" fill="#3182bd"/>
+<path d="M450 280 L424.82 156.24 A126.30 126.30 0 0 1 450.55 153.71 Z" fill="#3182bd"/>
+</g>
+<g clip-path="url(#clip2)">
+<g transform="translate(395.18,460.72)">
+<g transform="rotate(-433.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Mazda RX4</text>
+</g>
+</g>
+<g transform="translate(360.98,446.55)">
+<g transform="rotate(-421.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Mazda RX4 Wag</text>
+</g>
+</g>
+<g transform="translate(595.98,160.19)">
+<g transform="rotate(-39.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Datsun 710</text>
+</g>
+</g>
+<g transform="translate(569.81,425.98)">
+<g transform="rotate(-309.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Hornet 4 Drive</text>
+</g>
+</g>
+<g transform="translate(539.02,446.55)">
+<g transform="rotate(-298.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Hornet Sportabout</text>
+</g>
+</g>
+<g transform="translate(395.18,99.28)">
+<g transform="rotate(-286.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Valiant</text>
+</g>
+</g>
+<g transform="translate(630.72,225.18)">
+<g transform="rotate(-16.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Duster 360</text>
+</g>
+</g>
+<g transform="translate(304.02,399.81)">
+<g transform="rotate(-399.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 240D</text>
+</g>
+</g>
+<g transform="translate(330.19,425.98)">
+<g transform="rotate(-410.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 230</text>
+</g>
+</g>
+<g transform="translate(283.45,369.02)">
+<g transform="rotate(-388.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 280</text>
+</g>
+</g>
+<g transform="translate(269.28,334.82)">
+<g transform="rotate(-376.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 280C</text>
+</g>
+</g>
+<g transform="translate(262.06,298.51)">
+<g transform="rotate(-365.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 450SE</text>
+</g>
+</g>
+<g transform="translate(262.06,261.49)">
+<g transform="rotate(-354.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 450SL</text>
+</g>
+</g>
+<g transform="translate(269.28,225.18)">
+<g transform="rotate(-343.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Merc 450SLC</text>
+</g>
+</g>
+<g transform="translate(504.82,99.28)">
+<g transform="rotate(-73.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Cadillac Fleetwood</text>
+</g>
+</g>
+<g transform="translate(504.82,460.72)">
+<g transform="rotate(-286.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Lincoln Continental</text>
+</g>
+</g>
+<g transform="translate(569.81,134.02)">
+<g transform="rotate(-50.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Chrysler Imperial</text>
+</g>
+</g>
+<g transform="translate(637.94,298.51)">
+<g transform="rotate(-354.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Fiat 128</text>
+</g>
+</g>
+<g transform="translate(595.98,399.81)">
+<g transform="rotate(-320.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Honda Civic</text>
+</g>
+</g>
+<g transform="translate(330.19,134.02)">
+<g transform="rotate(-309.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Toyota Corolla</text>
+</g>
+</g>
+<g transform="translate(360.98,113.45)">
+<g transform="rotate(-298.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Toyota Corona</text>
+</g>
+</g>
+<g transform="translate(616.55,190.98)">
+<g transform="rotate(-28.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Dodge Challenger</text>
+</g>
+</g>
+<g transform="translate(468.51,92.06)">
+<g transform="rotate(-84.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">AMC Javelin</text>
+</g>
+</g>
+<g transform="translate(539.02,113.45)">
+<g transform="rotate(-61.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Camaro Z28</text>
+</g>
+</g>
+<g transform="translate(283.45,190.98)">
+<g transform="rotate(-331.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Pontiac Firebird</text>
+</g>
+</g>
+<g transform="translate(630.72,334.82)">
+<g transform="rotate(-343.13)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Fiat X1-9</text>
+</g>
+</g>
+<g transform="translate(304.02,160.19)">
+<g transform="rotate(-320.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Porsche 914-2</text>
+</g>
+</g>
+<g transform="translate(468.51,467.94)">
+<g transform="rotate(-275.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Lotus Europa</text>
+</g>
+</g>
+<g transform="translate(616.55,369.02)">
+<g transform="rotate(-331.88)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Ford Pantera L</text>
+</g>
+</g>
+<g transform="translate(637.94,261.49)">
+<g transform="rotate(-5.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#222222" paint-order="stroke">Ferrari Dino</text>
+</g>
+</g>
+<g transform="translate(431.49,467.94)">
+<g transform="rotate(-444.38)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Maserati Bora</text>
+</g>
+</g>
+<g transform="translate(431.49,92.06)">
+<g transform="rotate(-275.63)">
+<text x="0" y="0" font-family="sans-serif" font-size="9" text-anchor="start" dominant-baseline="central" fill="#222222" paint-order="stroke">Volvo 142E</text>
+</g>
+</g>
+</g>
+</g>
+</svg>

@@ -1,0 +1,43 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Interactive visual plot builder for gog4j'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api project(':gog4j-controls')
+    implementation project(':gog4j-dflib-data')
+    implementation project(':gog4j-dflib')
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+    // The `javafx` configuration feeds --module-path and is not transitive
+    // across projects, so the incubator modules the shared controls need have
+    // to be repeated here.
+    javafx "org.openjfx:jfx-incubator-richtext:${incubatorVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:jfx-incubator-input:${incubatorVersion}:${inputFxPlatform}"
+
+    testImplementation testFixtures(project(':gog4j'))
+}
+
+// Runs the interactive single-plot visual builder: ./gradlew :gog4j-builder:runBuilder
+tasks.register('runBuilder', JavaExec) {
+    group = 'application'
+    description = 'Runs the interactive single-plot visual builder'
+    mainClass = 'org.jtaccuino.gog.builder.PlotBuilderApp'
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs "--module-path=${javafxModulePath()}", '--add-modules=javafx.controls,jfx.incubator.richtext,jfx.incubator.input'
+    jvmArgs '-Dsampler.cache=speed'
+    jvmArgs '-Dprism.maxvram=2G'
+}
+
+// The UI modules expose many public members whose prose docs are not yet
+// complete; keep doclint's reference/syntax/html checks (still -Werror) but do
+// not fail the build on missing comments.
+tasks.named('javadoc') {
+    options.addStringOption('Xdoclint:all,-missing', '-quiet')
+}

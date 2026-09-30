@@ -1,0 +1,102 @@
+/* Source drawer docked along the bottom border of a plot card. */
+.source-drawer-handle-bar {
+    -fx-background-color: #fdfdfb;
+    -fx-background-radius: 8 8 0 0;
+    -fx-border-color: #e0dcd6 #e0dcd6 transparent #e0dcd6;
+    -fx-border-width: 1 1 0 1;
+    -fx-border-radius: 8 8 0 0;
+    -fx-padding: 6 12 6 12;
+}
+
+.source-drawer-nudge {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6b6158;
+    -fx-font-size: 11px;
+    -fx-padding: 2 8 2 8;
+    -fx-cursor: hand;
+}
+
+.source-drawer-nudge:hover {
+    -fx-text-fill: #40382f;
+}
+
+.source-drawer-nudge-chevron {
+    -fx-fill: #6b6158;
+}
+
+.source-drawer-panel {
+    -fx-background-color: #fdfdfb;
+    -fx-background-radius: 8;
+    -fx-border-color: #e0dcd6;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+.source-drawer-method {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a8a8a;
+}
+
+.source-drawer-icon-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+    -fx-cursor: hand;
+}
+
+.source-drawer-icon-button:hover {
+    -fx-background-color: #ececec;
+}
+
+.source-drawer-icon {
+    -fx-fill: #5a5a5a;
+}
+
+.code-area {
+    -fx-font-family: "Menlo";
+    -fx-font-size: 12px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 2;
+    -fx-border-color: #e7e4df;
+    -fx-border-radius: 4;
+}
+
+.line-number-decorator {
+    -fx-text-fill: #999999;
+}
+
+.source-drawer-theme-dark .source-drawer-handle-bar {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #555555 #555555 transparent #555555;
+}
+
+.source-drawer-theme-dark .source-drawer-nudge {
+    -fx-text-fill: #c9c9c9;
+}
+
+.source-drawer-theme-dark .source-drawer-nudge-chevron {
+    -fx-fill: #9b9b9b;
+}
+
+.source-drawer-theme-dark .source-drawer-method {
+    -fx-text-fill: #8a8a8a;
+}
+
+.source-drawer-theme-dark .source-drawer-icon {
+    -fx-fill: #9b9b9b;
+}
+
+.source-drawer-theme-dark .source-drawer-panel {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #555555;
+}
+
+.source-drawer-theme-dark .code-area {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #4b4b4b;
+}
+
+.source-drawer-theme-dark .line-number-decorator {
+    -fx-text-fill: #606060;
+}

@@ -1,0 +1,23 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Sampler metadata: the @SamplePlot annotation, its tag vocabulary, and the compile-time registry processor'
+
+java {
+    withJavadocJar()
+}
+
+// The registry processor is build tooling rather than shipped runtime API;
+// exempt the module from the strict lint/errorprone policy that governs the
+// runtime and test sources (the annotations and tag enums are trivial).
+tasks.named('compileJava').configure {
+    options.compilerArgs.remove('-Werror')
+    options.compilerArgs.removeAll { it.contains('ErrorProne') }
+}
+
+// Likewise, the annotation/tag/processor members carry terse (or no) javadoc
+// and must not fail the strict javadoc policy.
+tasks.named('javadoc').configure {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}

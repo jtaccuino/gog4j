@@ -1,0 +1,36 @@
+plugins {
+    id 'gog4j.java-conventions'
+}
+
+description = 'Sample plots rendered from Apache Parquet files through the Hardwood backend'
+
+java {
+    withJavadocJar()
+}
+
+// The @SamplePlot annotation and the registry processor live in
+// :gog4j-sampler-annotations; this module only supplies the annotated factories.
+dependencies {
+    api project(':gog4j-hardwood-data')
+    api project(':gog4j-sampler-annotations')
+    implementation project(':gog4j-hardwood')
+    javafx "org.openjfx:javafx-base:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-graphics:${javafxVersion}:${javaFxPlatform}"
+    javafx "org.openjfx:javafx-controls:${javafxVersion}:${javaFxPlatform}"
+
+    // Run the processor while compiling main so this module's registry is generated.
+    annotationProcessor project(':gog4j-sampler-annotations')
+
+    testImplementation testFixtures(project(':gog4j'))
+}
+
+tasks.named('compileJava').configure {
+    // The annotation processor runs in a Gradle worker whose working directory
+    // is not the project dir; hand it the absolute source root so it can read
+    // the example sources and bake them into the generated registry resource.
+    options.compilerArgs.add('-Asampler.srcdir=' + project.file('src/main/java').absolutePath)
+    // JavaFX control annotations (@DefaultProperty, @IDProperty) are not
+    // claimed by our processor; silence the benign "not claimed" lint that
+    // -Werror would otherwise escalate.
+    options.compilerArgs.add('-Xlint:-processing')
+}

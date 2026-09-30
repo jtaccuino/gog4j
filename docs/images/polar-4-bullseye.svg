@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M633 280 A207 207 0 0 1 219 280 A207 207 0 0 1 633 280 Z"/></clipPath>
+<clipPath id="clip1"><path d="M50 50h752v460h-752Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">4. Bulls-eye (coordPolar)</text>
+<text x="822.14" y="72" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#222222" paint-order="stroke">Cylinders</text>
+<rect x="822.14" y="82" width="14" height="14" fill="#1f77b4" fill-opacity="0.85"/>
+<rect x="822.14" y="82" width="14" height="14" fill="none" stroke="#16537e" stroke-width="0.5"/>
+<text x="844.14" y="92" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">4 cylinders</text>
+<rect x="822.14" y="102" width="14" height="14" fill="#ff7f0e" fill-opacity="0.85"/>
+<rect x="822.14" y="102" width="14" height="14" fill="none" stroke="#b2590a" stroke-width="0.5"/>
+<text x="844.14" y="112" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">6 cylinders</text>
+<rect x="822.14" y="122" width="14" height="14" fill="#2ca02c" fill-opacity="0.85"/>
+<rect x="822.14" y="122" width="14" height="14" fill="none" stroke="#1f701f" stroke-width="0.5"/>
+<text x="844.14" y="132" font-family="sans-serif" font-size="10" text-anchor="start" fill="#222222" paint-order="stroke">8 cylinders</text>
+<rect x="50" y="50" width="752" height="460" fill="#ebebeb"/>
+<ellipse cx="426" cy="280" rx="64.69" ry="64.69" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="426" cy="280" rx="129.38" ry="129.38" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<ellipse cx="426" cy="280" rx="194.06" ry="194.06" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="426" y1="280" x2="426" y2="487" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="426" y1="487" x2="426" y2="491" stroke="#333333" stroke-width="1"/>
+<text x="426" y="505" font-family="sans-serif" font-size="9" text-anchor="middle" dominant-baseline="central" fill="#555555" paint-order="stroke">all</text>
+<ellipse cx="426" cy="280" rx="207" ry="207" fill="none" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="280" stroke="#333333" stroke-width="1"/>
+<line x1="50" y1="280" x2="45" y2="280" stroke="#333333" stroke-width="1"/>
+<text x="40" y="284" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">0</text>
+<line x1="50" y1="215.31" x2="45" y2="215.31" stroke="#333333" stroke-width="1"/>
+<text x="40" y="219.31" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">10</text>
+<line x1="50" y1="150.63" x2="45" y2="150.63" stroke="#333333" stroke-width="1"/>
+<text x="40" y="154.63" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">20</text>
+<line x1="50" y1="85.94" x2="45" y2="85.94" stroke="#333333" stroke-width="1"/>
+<text x="40" y="89.94" font-family="sans-serif" font-size="9" text-anchor="end" dominant-baseline="central" fill="#555555" paint-order="stroke">30</text>
+<g transform="translate(21.22,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" dominant-baseline="central" fill="#444444" paint-order="stroke">Count</text>
+</g>
+</g>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<ellipse cx="426" cy="280" rx="71.16" ry="71.16" fill="#1f77b4"/>
+<path d="M425.49 163.56 A116.44 116.44 0 0 1 426.51 396.44 A116.44 116.44 0 0 1 425.49 163.56 A116.44 116.44 0 0 1 426.51 163.56 L426.31 208.84 A71.16 71.16 0 0 0 425.69 351.16 A71.16 71.16 0 0 0 426.31 208.84 A71.16 71.16 0 0 0 425.69 208.84 Z" fill="#ff7f0e"/>
+<path d="M425.1 73 A207 207 0 0 1 426.90 487 A207 207 0 0 1 425.10 73 A207 207 0 0 1 426.90 73 L426.51 163.56 A116.44 116.44 0 0 0 425.49 396.44 A116.44 116.44 0 0 0 426.51 163.56 A116.44 116.44 0 0 0 425.49 163.56 Z" fill="#2ca02c"/>
+</g>
+</g>
+</svg>
