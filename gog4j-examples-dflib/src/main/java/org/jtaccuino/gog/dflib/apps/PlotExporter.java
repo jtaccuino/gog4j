@@ -69,6 +69,7 @@ import org.jtaccuino.gog.examples.dflib.PolarPlots;
 import org.jtaccuino.gog.examples.dflib.PolarRadarPlots;
 import org.jtaccuino.gog.examples.dflib.PolarRadialPlots;
 import org.jtaccuino.gog.examples.dflib.ScalePlots;
+import org.jtaccuino.gog.examples.dflib.SeattleWeatherPlots;
 import org.jtaccuino.gog.examples.dflib.StatPlots;
 import org.jtaccuino.gog.examples.dflib.SummaryStatPlots;
 import org.jtaccuino.gog.examples.dflib.Surface3dPlots;
@@ -158,6 +159,7 @@ public class PlotExporter {
         SECTIONS.put("stat", "`Stats.smooth()` — the statistical transformation behind the smoother, used directly as a pure data transform.");
         SECTIONS.put("stat-summary", "`Stats.bin()`/`Stats.summary()` — aggregated distributions and ranges: `Geoms.histogram()`, `Geoms.freqpoly()`, and the error/range family (`Geoms.errorbar()`, `Geoms.crossbar()`, `Geoms.pointrange()`, `Geoms.ribbon()`).");
         SECTIONS.put("line", "`Geoms.line()` — connected time series, optionally averaged.");
+        SECTIONS.put("timestamp", "`ColumnType.TIMESTAMP` — a timestamp axis, whose break ladder adapts from months across a year down to hours across a day, in normal, flipped, and filled geometries.");
         SECTIONS.put("bar", "`Geoms.bar()` — bars whose heights are the observation counts per x category (`Stats.count()`), plus computed `afterStat()` fills.");
         SECTIONS.put("col", "`Geoms.col()` — columns whose heights are the values in the data, stacked, dodged, and horizontal.");
         SECTIONS.put("bar-col-stats", "`Geoms.bar()` vs `Geoms.col()` — the `Stats.count()`/`Stats.identity()` split and how each geometry can be overridden to the other's statistic.");
@@ -339,6 +341,16 @@ public class PlotExporter {
                 "line", "One series per animal, colour mapped"));
         plots.put("meat-3-faceted", new Figure(MeatPlots.createFinalFacettedPlot(), FACET_W, FACET_H,
                 "line", "The same series faceted into small multiples"));
+
+        // --- timestamp axes ---
+        plots.put("seattle-weather-01-yearly-temperature", new Figure(SeattleWeatherPlots.createYearlyTemperature(), W, H,
+                "timestamp", "Hourly temperature over a year — the timestamp axis breaks the span by month"));
+        plots.put("seattle-weather-02-daily-pressure", new Figure(SeattleWeatherPlots.createDailyPressure(), W, H,
+                "timestamp", "Pressure over a single day — the timestamp axis narrows to hourly breaks"));
+        plots.put("seattle-weather-03-flipped", new Figure(SeattleWeatherPlots.createFlippedTemperature(), W, H,
+                "timestamp", "A timestamp column on the y axis — the same break ladder under `coordFlip()`"));
+        plots.put("seattle-weather-04-area", new Figure(SeattleWeatherPlots.createTemperatureArea(), W, H,
+                "timestamp", "A filled temperature envelope over the year"));
 
         // --- Geoms.col() (identity columns) ---
         plots.put("meat-4-bar-chart", new Figure(MeatPlots.createBarChartComparison(), W, H,

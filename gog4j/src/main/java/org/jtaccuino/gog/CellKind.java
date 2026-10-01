@@ -51,8 +51,13 @@ enum CellKind {
         return DD;
     }
 
-    /** Whether the value type plots along a continuous axis. */
+    /**
+     * Whether the value type plots along a continuous axis. Delegates to
+     * {@link DataExtractor.ColumnType#isContinuous} so the notion of
+     * "continuous" stays defined in one place — a timestamp column is as
+     * continuous as a date column, just with a finer break ladder.
+     */
     static boolean isContinuous(DataExtractor.ColumnType type) {
-        return type == DataExtractor.ColumnType.NUMBER || type == DataExtractor.ColumnType.DATE;
+        return DataExtractor.ColumnType.isContinuous(type);
     }
 }

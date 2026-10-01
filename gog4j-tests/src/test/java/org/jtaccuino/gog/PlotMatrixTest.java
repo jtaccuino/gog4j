@@ -555,6 +555,15 @@ class PlotMatrixTest {
         assertEquals(CellKind.TT,
                 CellKind.of(DataExtractor.ColumnType.DATE, DataExtractor.ColumnType.NUMBER),
                 "temporal × numeric is TT");
+        assertEquals(CellKind.TT,
+                CellKind.of(DataExtractor.ColumnType.TIMESTAMP, DataExtractor.ColumnType.NUMBER),
+                "timestamp × numeric is TT");
+        assertEquals(CellKind.TT,
+                CellKind.of(DataExtractor.ColumnType.TIMESTAMP, DataExtractor.ColumnType.TIMESTAMP),
+                "timestamp × timestamp is TT");
+        assertEquals(CellKind.COMBO,
+                CellKind.of(DataExtractor.ColumnType.TIMESTAMP, DataExtractor.ColumnType.TEXT),
+                "timestamp row × categorical column is COMBO");
     }
 
     @Test

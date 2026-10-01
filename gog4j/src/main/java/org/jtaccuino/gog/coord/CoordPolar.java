@@ -15,13 +15,13 @@
  */
 package org.jtaccuino.gog.coord;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.VPos;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import org.jtaccuino.gog.MinMax;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.render.DrawSurface;
 import org.jtaccuino.gog.scale.Scale;
 import org.jtaccuino.gog.theme.Theme;
@@ -450,13 +450,13 @@ public class CoordPolar implements Coord {
         if (scale == null || scale.isDiscrete()) {
             return null;
         }
-        if (scale.isDateScale()) {
-            return dateTicks(scale);
+        if (isTemporalAxis(scale)) {
+            return temporalTicks(scale, radialTarget());
         }
         if (isPartialFan()) {
             return fanRadialBreaks(scale);
         }
-        var target = Math.max(4, (int) Math.round(radius() / 90.0) + 1);
+        var target = radialTarget();
         var ticks = scale.calculateTicks(target, null);
         if (ticks == null || ticks.isEmpty()) {
             return null;
@@ -464,72 +464,87 @@ public class CoordPolar implements Coord {
         return ticks;
     }
 
+    /** The number of radial breaks a polar panel of the current size aims for. */
+    private int radialTarget() {
+        return Math.max(4, (int) Math.round(radius() / 90.0) + 1);
+    }
+
+    /** The number of breaks the theta axis aims for. */
+    private static final int THETA_BREAKS = 12;
+
     /**
-     * The theta axis breaks: year-based ticks for a date scale, otherwise the
-     * scale's own evenly spaced ticks — the polar counterpart of a Cartesian
-     * date axis, whose positions read as years instead of raw epoch days.
+     * The theta axis breaks: calendar breaks for a date or timestamp scale,
+     * otherwise the scale's own evenly spaced ticks — the polar counterpart of
+     * a Cartesian temporal axis, whose positions read as dates and times instead
+     * of raw epoch days or milliseconds.
      */
     private List<Double> thetaTicks() {
         var theta = thetaScale();
-        return theta.isDateScale() ? dateTicks(theta) : theta.calculateTicks(12, null);
+        if (isTemporalAxis(theta)) {
+            return temporalTicks(theta, THETA_BREAKS);
+        }
+        return theta.calculateTicks(THETA_BREAKS, null);
     }
 
-    /** The theta axis label: the year of an epoch-day tick on a date scale, else the scale's label. */
+    /** The theta axis label: a calendar label on a temporal axis, else the scale's label. */
     private String thetaTickLabel(double tick) {
         var theta = thetaScale();
-        return theta.isDateScale() ? dateLabel(tick) : theta.getLabel(tick);
+        if (isTemporalAxis(theta)) {
+            return temporalLabel(tick, theta, THETA_BREAKS);
+        }
+        return theta.getLabel(tick);
     }
 
-    /** The radial axis label: the year of an epoch-day tick on a date scale, else the scale's label. */
+    /** The radial axis label: a calendar label on a temporal axis, else the scale's label. */
     private String radialTickLabel(double tick) {
         var scale = radialScale();
-        return scale.isDateScale() ? dateLabel(tick) : scale.getLabel(tick);
-    }
-
-    /** The year of an epoch-day tick value, for a date axis. */
-    private static String dateLabel(double tick) {
-        return String.valueOf(LocalDate.ofEpochDay(Math.round(tick)).getYear());
+        if (isTemporalAxis(scale)) {
+            return temporalLabel(tick, scale, radialTarget());
+        }
+        return scale.getLabel(tick);
     }
 
     /**
-     * Year-based break positions for a date scale: whole years at a step that
-     * adapts to the span (1, 2, 10, 20 or 25), the polar image of the Cartesian
-     * date-axis ticks.
+     * Whether the scale maps a temporal column, and so needs calendar breaks
+     * rather than the scale's own numeric ones.
+     *
+     * @param scale the scale, may be {@code null}
+     * @return {@code true} for a date or timestamp scale
      */
-    private List<Double> dateTicks(Scale scale) {
-        var ticks = new ArrayList<Double>();
-        var startYear = LocalDate.ofEpochDay((long) scale.minData()).getYear();
-        var endYear = LocalDate.ofEpochDay((long) scale.maxData()).getYear();
-        var yearRange = endYear - startYear;
+    private static boolean isTemporalAxis(Scale scale) {
+        return scale != null && (scale.isDateScale() || scale.isTimestampScale());
+    }
 
-        int yearStep = 10;
-        if (yearRange > 100) {
-            yearStep = 25;
-        } else if (yearRange > 40) {
-            yearStep = 20;
-        } else if (yearRange > 10) {
-            yearStep = 2;
-        } else {
-            yearStep = 1;
+    /**
+     * Calendar-aligned breaks for a temporal axis, resolved through
+     * {@link Temporals} exactly as the Cartesian axes resolve theirs, so the two
+     * coordinate systems cannot drift apart.
+     *
+     * @param scale  the temporal scale
+     * @param target the wanted number of breaks
+     * @return the break positions
+     */
+    private static List<Double> temporalTicks(Scale scale, int target) {
+        if (scale.isTimestampScale()) {
+            return Temporals.timestampTicks(scale.minData(), scale.maxData(), target);
         }
+        return Temporals.dateTicks(scale.minData(), scale.maxData());
+    }
 
-        var currentYear = (startYear / yearStep) * yearStep;
-        if (currentYear < startYear) {
-            currentYear += yearStep;
+    /**
+     * The label of a break on a temporal axis: a year on a date axis, and a date
+     * or date-time at the granularity the axis breaks at on a timestamp axis.
+     *
+     * @param tick   the break position in data units
+     * @param scale  the temporal scale
+     * @param target the wanted number of breaks, sizing the granularity
+     * @return the formatted label
+     */
+    private static String temporalLabel(double tick, Scale scale, int target) {
+        if (scale.isTimestampScale()) {
+            return Temporals.timestampLabel(tick, Temporals.granularityOf(scale.minData(), scale.maxData(), target));
         }
-
-        while (currentYear <= endYear) {
-            var epochDay = (double) LocalDate.of(currentYear, 1, 1).toEpochDay();
-            if (epochDay >= scale.minData() && epochDay <= scale.maxData()) {
-                ticks.add(epochDay);
-            }
-            currentYear += yearStep;
-        }
-
-        if (ticks.isEmpty()) {
-            ticks.add(scale.minData());
-        }
-        return ticks;
+        return Temporals.dateLabel(tick);
     }
 
     /**

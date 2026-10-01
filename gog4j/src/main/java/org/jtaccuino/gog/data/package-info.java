@@ -21,5 +21,11 @@
  * frame for plots such as function curves, so the core never depends on a
  * concrete DataFrame library. Concrete integrations are provided through the
  * service-provider interface in {@code org.jtaccuino.gog.spi}.
+ *
+ * <p>{@link org.jtaccuino.gog.data.Values} is the shared coercion of a raw
+ * value to its numeric position and display label, and
+ * {@link org.jtaccuino.gog.data.Temporals} is the matching temporal
+ * conversion, tick, and formatting logic. Keeping both here means a value's
+ * position on an axis and the text beside it are derived from the same reading.
  */
 package org.jtaccuino.gog.data;

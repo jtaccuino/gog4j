@@ -28,6 +28,7 @@ import org.jtaccuino.gog.LayerParams;
 import org.jtaccuino.gog.Plot;
 import org.jtaccuino.gog.coord.Coord;
 import org.jtaccuino.gog.coord.CoordPolar;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.render.DrawSurface;
 import org.jtaccuino.gog.scale.ResolvedScales;
 import org.jtaccuino.gog.scale.Scale;
@@ -996,7 +997,9 @@ public class GeomBar<DF> extends StackableGeom<DF> implements StatHost<DF>, Cons
                 }
 
                 if (mx >= bx && mx <= (bx + bw) && my >= by && my <= (by + bh)) {
-                    var labelX = xName + ": " + ((rx instanceof LocalDate ld) ? ld.toString() : String.valueOf(rx));
+                    var labelX = xName + ": " + ((rx instanceof LocalDate ld) ? ld.toString()
+                            : Temporals.isTimestamp(rx) ? Temporals.label(rx)
+                            : String.valueOf(rx));
                     return AesRendering.statValueTooltip(null, labelX, yDouble);
                 }
             }

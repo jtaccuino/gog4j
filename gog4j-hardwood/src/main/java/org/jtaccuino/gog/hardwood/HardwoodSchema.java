@@ -25,6 +25,7 @@ import java.io.UncheckedIOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.jtaccuino.gog.spi.DataExtractor;
 
 /**
  * The resolved schema of a Parquet file (or set of files): the column names, in
@@ -35,14 +36,51 @@ import java.util.List;
  */
 final class HardwoodSchema {
 
-    /** The engine-facing category of a column, mirroring {@code DataExtractor.ColumnType}. */
+    /**
+     * The engine-facing category of a column, mirroring
+     * {@code DataExtractor.ColumnType}.
+     */
     enum ColumnKind {
         /** Numeric values. */
         NUMBER,
-        /** Temporal values such as {@link LocalDate}. */
+        /** Calendar dates without a time of day, such as {@link LocalDate}. */
         DATE,
+        /** Date-time values, stored as epoch milliseconds. */
+        TIMESTAMP,
         /** Everything else: categories, booleans, free text. */
-        TEXT
+        TEXT;
+
+        /**
+         * The engine-facing type this kind stands for.
+         *
+         * @return the corresponding {@code DataExtractor.ColumnType}
+         */
+        DataExtractor.ColumnType columnType() {
+            return switch (this) {
+                case NUMBER -> DataExtractor.ColumnType.NUMBER;
+                case DATE -> DataExtractor.ColumnType.DATE;
+                case TIMESTAMP -> DataExtractor.ColumnType.TIMESTAMP;
+                case TEXT -> DataExtractor.ColumnType.TEXT;
+            };
+        }
+
+        /**
+         * The kind a sampled column of the given engine-facing type stands for.
+         *
+         * @param type the engine-facing column type, may be {@code null}
+         * @return the corresponding kind, defaulting to {@link #TEXT}
+         */
+        static ColumnKind of(DataExtractor.ColumnType type) {
+            if (type == null) {
+                return TEXT;
+            }
+            return switch (type) {
+                case NUMBER -> NUMBER;
+                case DATE -> DATE;
+                case TIMESTAMP -> TIMESTAMP;
+                case TEXT -> TEXT;
+            };
+        }
     }
 
     private final List<String> columnNames;
@@ -86,10 +124,16 @@ final class HardwoodSchema {
      */
     static ColumnKind kindOf(ColumnSchema column) {
         var logical = column.logicalType();
-        if (logical instanceof LogicalType.DateType || logical instanceof LogicalType.TimestampType) {
+        if (logical instanceof LogicalType.DateType) {
             return ColumnKind.DATE;
         }
-        if (logical instanceof LogicalType.StringType || logical instanceof LogicalType.EnumType
+        if (logical instanceof LogicalType.TimestampType) {
+            return ColumnKind.TIMESTAMP;
+        }
+        // A time of day has no date to anchor it on an axis, so it stays text
+        // rather than becoming a number from its INT32/INT64 physical type.
+        if (logical instanceof LogicalType.TimeType || logical instanceof LogicalType.StringType
+                || logical instanceof LogicalType.EnumType
                 || logical instanceof LogicalType.UuidType || logical instanceof LogicalType.JsonType) {
             return ColumnKind.TEXT;
         }
@@ -97,7 +141,11 @@ final class HardwoodSchema {
         return switch (physical) {
             case INT32, INT64, FLOAT, DOUBLE -> ColumnKind.NUMBER;
             case BOOLEAN -> ColumnKind.TEXT;
-            case INT96, BYTE_ARRAY, FIXED_LEN_BYTE_ARRAY -> ColumnKind.TEXT;
+            // INT96 is Parquet's original, non-logical timestamp type, so a
+            // column without a logical annotation is a date-time when it uses
+            // it and plain text otherwise.
+            case INT96 -> ColumnKind.TIMESTAMP;
+            case BYTE_ARRAY, FIXED_LEN_BYTE_ARRAY -> ColumnKind.TEXT;
         };
     }
 
@@ -110,24 +158,9 @@ final class HardwoodSchema {
      */
     static ColumnKind kindOfValues(List<?> values) {
         for (var v : values) {
-            if (v == null) {
-                continue;
+            if (v != null) {
+                return ColumnKind.of(DataExtractor.ColumnType.ofValue(v));
             }
-            if (v instanceof LocalDate) {
-                return ColumnKind.DATE;
-            }
-            if (v instanceof Number) {
-                return ColumnKind.NUMBER;
-            }
-            if (v instanceof String s) {
-                try {
-                    Double.parseDouble(s);
-                    return ColumnKind.NUMBER;
-                } catch (NumberFormatException e) {
-                    return ColumnKind.TEXT;
-                }
-            }
-            return ColumnKind.TEXT;
         }
         return ColumnKind.TEXT;
     }

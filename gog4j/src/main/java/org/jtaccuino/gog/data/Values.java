@@ -24,9 +24,12 @@ import java.util.Locale;
  * re-implemented inside every geometry.
  * <p>
  * {@link #toDouble(Object)} converts a value to its numeric data position:
- * {@link Number} keeps its double value, {@link LocalDate} becomes its epoch
- * day, and anything else is parsed as a {@code double}. {@link #label(Object)}
- * produces a display string for tooltips and legends.
+ * {@link Number} keeps its double value, a {@link LocalDate} becomes its epoch
+ * day, a date-time value becomes its epoch millisecond, and anything else is
+ * parsed as a {@code double}. The temporal cases resolve through
+ * {@link Temporals}, which is also what the axes use, so a value's position and
+ * its label can never disagree. {@link #label(Object)} produces a display
+ * string for tooltips and legends.
  */
 public final class Values {
 
@@ -56,6 +59,7 @@ public final class Values {
     public static double toDouble(Object value, double onNumberFormatError) {
         if (value instanceof Number n) return n.doubleValue();
         if (value instanceof LocalDate ld) return ld.toEpochDay();
+        if (Temporals.isTimestamp(value)) return Temporals.toEpochMillis(value);
         if (value != null) {
             try {
                 return Double.parseDouble(value.toString().trim());
@@ -80,6 +84,7 @@ public final class Values {
         if (value == null) return null;
         if (value instanceof Number n) return n.doubleValue();
         if (value instanceof LocalDate ld) return (double) ld.toEpochDay();
+        if (Temporals.isTimestamp(value)) return Temporals.toEpochMillis(value);
         try {
             return Double.parseDouble(value.toString().trim());
         } catch (NumberFormatException e) {
@@ -89,8 +94,8 @@ public final class Values {
 
     /**
      * Produces a display string for a raw column value: dates print as ISO text,
-     * whole numbers without a decimal point, and other numbers with up to two
-     * decimals.
+     * date-times print as readable local text, whole numbers without a decimal
+     * point, and other numbers with up to two decimals.
      *
      * @param value the raw column value, may be {@code null}
      * @return the display string
@@ -98,6 +103,7 @@ public final class Values {
     public static String label(Object value) {
         if (value == null) return "null";
         if (value instanceof LocalDate ld) return ld.toString();
+        if (Temporals.isTimestamp(value)) return Temporals.label(value);
         if (value instanceof Number n) {
             var v = n.doubleValue();
             if (v == Math.rint(v) && Math.abs(v) < 1e15) {

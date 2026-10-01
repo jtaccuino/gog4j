@@ -9,9 +9,36 @@ java {
 }
 
 // The CSV fixtures live in :gog4j-data. The `converter` source set holds the
-// build-time CsvToParquet tool; its output is not published.
+// build-time CsvToParquet tool; its output is not published. `converterTest`
+// exercises the converter's parsing rules without running a conversion.
 sourceSets {
     converter
+    converterTest {
+        compileClasspath += sourceSets.converter.output
+        runtimeClasspath += sourceSets.converter.output
+    }
+}
+
+configurations {
+    converterTestImplementation.extendsFrom converterImplementation
+    converterTestRuntimeOnly.extendsFrom converterRuntimeOnly
+}
+
+dependencies {
+    converterTestImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    converterTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.register('converterTest', Test) {
+    group = 'verification'
+    description = 'Runs the build-time CsvToParquet converter tests'
+    testClassesDirs = sourceSets.converterTest.output.classesDirs
+    classpath = sourceSets.converterTest.runtimeClasspath
+    useJUnitPlatform()
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('converterTest')
 }
 
 dependencies {
@@ -35,6 +62,9 @@ def datasets = [
         'mtcars'   : 'mtcars.csv',
         'gwas'     : 'height_gwas_thinned.csv.gz',
         'gwas-lead': 'height_lead_snps.csv',
+        // The name doubles as the examples/<name> category, which is where the
+        // CSV lives; the conversion rules classify its date column by content.
+        'seattle-weather' : 'seattle-weather-hourly.csv',
 ]
 
 def datasetArgs = datasets.collect { name, file -> [name, file] }.flatten()

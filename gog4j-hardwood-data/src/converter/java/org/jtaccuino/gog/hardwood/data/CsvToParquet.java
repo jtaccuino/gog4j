@@ -32,6 +32,14 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -56,6 +64,9 @@ import org.dflib.csv.Csv;
  * under {@code /examples/...}.
  */
 public final class CsvToParquet {
+
+    /** Strict ISO-8601 calendar date, so a numeric column is never read as one. */
+    private static final DateTimeFormatter ISO_LOCAL_DATE = DateTimeFormatter.ISO_LOCAL_DATE;
 
     private CsvToParquet() {
     }
@@ -90,8 +101,8 @@ public final class CsvToParquet {
         Files.createDirectories(target.getParent());
         Files.deleteIfExists(target);
 
-        var schema = schemaFor(frame);
-        var types = physicalTypes(frame);
+        var types = columnTypes(frame);
+        var schema = schemaFor(frame, types);
         var config = WriterConfig.builder().codec(CompressionCodec.ZSTD).build();
         try (var writer = ParquetFileWriter.create(OutputFile.of(target), schema, config)) {
             writer.createdBy("gog4j-hardwood-data CsvToParquet");
@@ -135,33 +146,78 @@ public final class CsvToParquet {
         return names;
     }
 
-    private static FileSchema schemaFor(DataFrame frame) {
+    private static FileSchema schemaFor(DataFrame frame, Map<String, ColumnType> types) {
         var builder = FileSchema.builder("gog4j");
         for (var name : columnNames(frame)) {
-            var physical = physicalType(frame.getColumn(name));
-            builder.addColumn(name, physical, RepetitionType.OPTIONAL,
-                    physical == PhysicalType.BYTE_ARRAY ? new LogicalType.StringType() : null);
+            var type = types.get(name);
+            builder.addColumn(name, type.physical(), RepetitionType.OPTIONAL, type.logical());
         }
         return builder.build();
     }
 
-    /** The physical type decided for each column, aligned with the column order. */
-    private static Map<String, PhysicalType> physicalTypes(DataFrame frame) {
-        var types = new LinkedHashMap<String, PhysicalType>();
+    /**
+     * The column type decided for each column, aligned with the column order.
+     * <p>
+     * Classified once and then reused for both the schema and the row writing:
+     * a per-row decision could disagree with the schema it was written against,
+     * which Parquet only catches at read time.
+     *
+     * @param frame the loaded frame
+     * @return the type of each column
+     */
+    private static Map<String, ColumnType> columnTypes(DataFrame frame) {
+        var types = new LinkedHashMap<String, ColumnType>();
         for (var name : columnNames(frame)) {
-            types.put(name, physicalType(frame.getColumn(name)));
+            types.put(name, columnType(frame.getColumn(name)));
         }
         return types;
     }
 
     /**
-     * Classifies a column by scanning its values. DFLib's plain CSV loader
-     * hands every value back as a {@link String}, so a column counts as numeric
-     * when all its non-null values parse as numbers: integral ones become
-     * {@code INT64}, any fractional value makes it {@code DOUBLE}, and
-     * everything else is {@code BYTE_ARRAY} (UTF-8 string).
+     * The engine-facing shape of a converted column: the physical type to write
+     * and the logical annotation that gives it meaning on the way back in.
      */
-    private static PhysicalType physicalType(Series<?> series) {
+    private record ColumnType(PhysicalType physical, LogicalType logical) {
+
+        /** {@code INT64} numbers, written as {@code long}. */
+        static final ColumnType INTEGER = new ColumnType(PhysicalType.INT64, null);
+
+        /** {@code DOUBLE} numbers, written as {@code double}. */
+        static final ColumnType DOUBLE = new ColumnType(PhysicalType.DOUBLE, null);
+
+        /** UTF-8 text, written as {@link String}. */
+        static final ColumnType TEXT = new ColumnType(PhysicalType.BYTE_ARRAY, new LogicalType.StringType());
+
+        /**
+         * {@code INT32} epoch days with Parquet's {@code DATE} annotation,
+         * written as a {@link LocalDate}. Parquet defines a date as days since
+         * the epoch with no time of day, which is exactly a calendar date.
+         */
+        static final ColumnType DATE = new ColumnType(PhysicalType.INT32, new LogicalType.DateType());
+
+        /**
+         * {@code INT64} epoch milliseconds with a UTC-adjusted {@code TIMESTAMP}
+         * annotation, written as an {@link Instant}.
+         * <p>
+         * The zone-less local date-times of the source files are read as UTC, the
+         * same reading the rendering path applies, so the round trip is
+         * lossless for them.
+         */
+        static final ColumnType TIMESTAMP = new ColumnType(PhysicalType.INT64,
+                new LogicalType.TimestampType(true, LogicalType.TimeUnit.MILLIS));
+    }
+
+    /**
+     * Classifies a column by scanning its values, in the order that keeps the
+     * more specific readings first: a date or date-time column is also "not a
+     * number", so asking about numbers before about calendars would misread it.
+     *
+     * <p>DFLib's plain CSV loader hands every value back as a {@link String}, so
+     * each shape is confirmed against the whole column: a single value that does
+     * not fit downgrades the column to text, since a partially-typed column is
+     * not something the reader can recover.
+     */
+    private static ColumnType columnType(Series<?> series) {
         var sawValue = false;
         var sawFraction = false;
         for (var i = 0; i < series.size(); i++) {
@@ -170,6 +226,11 @@ public final class CsvToParquet {
                 continue;
             }
             sawValue = true;
+            if (value instanceof LocalDate || value instanceof LocalDateTime
+                    || value instanceof Instant || value instanceof OffsetDateTime
+                    || value instanceof ZonedDateTime) {
+                continue;
+            }
             if (value instanceof Double || value instanceof Float) {
                 sawFraction = true;
                 continue;
@@ -184,13 +245,88 @@ public final class CsvToParquet {
                     sawFraction = true;
                 }
             } catch (NumberFormatException e) {
-                return PhysicalType.BYTE_ARRAY;
+                // Not a number: a calendar reading still fits, otherwise text.
+                if (!parsesAsDate(text) && !parsesAsDateTime(text)) {
+                    return ColumnType.TEXT;
+                }
             }
         }
         if (!sawValue) {
-            return PhysicalType.BYTE_ARRAY;
+            return ColumnType.TEXT;
         }
-        return sawFraction ? PhysicalType.DOUBLE : PhysicalType.INT64;
+        var first = firstNonMissing(series);
+        var text = String.valueOf(first).trim();
+        if (parsesAsDate(text)) {
+            return ColumnType.DATE;
+        }
+        if (parsesAsDateTime(text)) {
+            return ColumnType.TIMESTAMP;
+        }
+        return sawFraction ? ColumnType.DOUBLE : ColumnType.INTEGER;
+    }
+
+    /** {@return the first non-missing value of the column} */
+    private static Object firstNonMissing(Series<?> series) {
+        for (var i = 0; i < series.size(); i++) {
+            Object value = series.get(i);
+            if (!isMissing(value)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Whether the text is an ISO-8601 calendar date with no time of day, e.g.
+     * {@code 2010-01-01}.
+     *
+     * @param text the cell text
+     * @return {@code true} when the text parses as a date
+     */
+    static boolean parsesAsDate(String text) {
+        try {
+            LocalDate.parse(text, ISO_LOCAL_DATE);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Whether the text is an ISO-8601 date-time, with or without a zone, e.g.
+     * {@code 2010-01-01T01:00:00} or {@code 2010-01-01T01:00:00Z}.
+     *
+     * @param text the cell text
+     * @return {@code true} when the text parses as a date-time
+     */
+    static boolean parsesAsDateTime(String text) {
+        try {
+            LocalDateTime.parse(text, DateTimeFormatter.ISO_DATE_TIME);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * The epoch-millisecond position of a date-time cell.
+     * <p>
+     * A cell that carries a zone or offset names an instant, so it is read as
+     * one. A zone-less cell is a wall-clock reading with no instant of its own;
+     * it is taken as UTC, the same reading the rendering path applies, so the
+     * round trip through the file is lossless.
+     *
+     * @param text the cell text
+     * @return the position in epoch milliseconds
+     */
+    static long toEpochMillis(String text) {
+        try {
+            return ZonedDateTime.parse(text, DateTimeFormatter.ISO_DATE_TIME)
+                    .toInstant().toEpochMilli();
+        } catch (DateTimeParseException e) {
+            return LocalDateTime.parse(text, DateTimeFormatter.ISO_DATE_TIME)
+                    .toInstant(ZoneOffset.UTC).toEpochMilli();
+        }
     }
 
     /**
@@ -207,15 +343,23 @@ public final class CsvToParquet {
     }
 
     private static void fill(StructBuilder builder, List<String> names,
-                             Map<String, PhysicalType> types, DataFrame frame, int row) {
+                             Map<String, ColumnType> types, DataFrame frame, int row) {
         for (var name : names) {
             Object value = frame.getColumn(name).get(row);
             if (isMissing(value)) {
                 builder.setNull(name);
-            } else if (types.get(name) == PhysicalType.INT64) {
-                builder.setLong(name, (long) Double.parseDouble(value.toString().trim()));
-            } else if (types.get(name) == PhysicalType.DOUBLE) {
-                builder.setDouble(name, Double.parseDouble(value.toString().trim()));
+                continue;
+            }
+            var type = types.get(name);
+            var text = value.toString().trim();
+            if (type.physical() == PhysicalType.INT32) {
+                builder.setDate(name, LocalDate.parse(text, ISO_LOCAL_DATE));
+            } else if (type.logical() instanceof LogicalType.TimestampType) {
+                builder.setTimestamp(name, Instant.ofEpochMilli(toEpochMillis(text)));
+            } else if (type.physical() == PhysicalType.INT64) {
+                builder.setLong(name, (long) Double.parseDouble(text));
+            } else if (type.physical() == PhysicalType.DOUBLE) {
+                builder.setDouble(name, Double.parseDouble(text));
             } else {
                 builder.setString(name, String.valueOf(value));
             }

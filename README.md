@@ -308,3 +308,4 @@ Licensed under the [Apache License, Version 2.0](LICENSE).
 
 ### Example Datasets
 - **Human height GWAS** (`examples/gwas`): derived from Yengo *et al.*, *Nature* **610**, 704–712 (2022), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Summary statistics courtesy of the [GIANT consortium](https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortium_data_files). See [the dataset README](gog4j-data/src/main/resources/examples/gwas/README.md) for provenance and preprocessing.
+- **Seattle hourly weather** (`examples/seattle-weather`): a year of hourly normals (8,759 rows) exercising timestamp axes, derived from the NOAA/NWS Seattle climate normals, a U.S. Government work in the public domain.

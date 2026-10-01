@@ -17,12 +17,14 @@ package org.jtaccuino.gog.render;
 
 import static java.awt.Color.WHITE;
 import static org.jtaccuino.gog.Geoms.hline;
+import static org.jtaccuino.gog.Geoms.line;
 import static org.jtaccuino.gog.Geoms.point;
 import static org.jtaccuino.gog.Geoms.vline;
 import static org.jtaccuino.gog.Guides.guide;
 import static org.jtaccuino.gog.Guides.guideColorbar;
 import static org.jtaccuino.gog.test.JavaFxToolkitExtension.onFxThread;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -48,6 +50,7 @@ import org.jtaccuino.gog.Aesthetic;
 import org.jtaccuino.gog.Ggplot;
 import org.jtaccuino.gog.Guides;
 import org.jtaccuino.gog.Plot;
+import org.jtaccuino.gog.examples.dflib.SeattleWeatherPlots;
 import org.jtaccuino.gog.test.JavaFxToolkitExtension;
 import org.jtaccuino.gog.theme.GuidePosition;
 import org.jtaccuino.gog.theme.Theme;
@@ -89,6 +92,14 @@ class SvgMatchesCanvasTest {
      * above the honest difference and below every failure mode checked.
      */
     private static final double MAX_BLOCK_DELTA = 20.0;
+
+    /**
+     * First block row below the title, where the plot panel starts. Glyph
+     * antialiasing for the large title differs between the two rasterisers by
+     * more than {@link #MAX_BLOCK_DELTA} allows, which says nothing about the
+     * axes, so the timestamp comparison starts below it.
+     */
+    private static final int TITLE_BAND = 40;
 
     /** How far the exported ink coverage may drift from the canvas rendering. */
     private static final double MIN_INK_RATIO = 0.6;
@@ -148,6 +159,31 @@ class SvgMatchesCanvasTest {
 
     private static String renderToSvg(Plot<DataFrame> plot) throws Exception {
         return onFxThread(() -> new SvgExporter().size(WIDTH, HEIGHT).toSvg(plot));
+    }
+
+    /**
+     * A day of hourly readings against a measurement, so the x axis has to break
+     * at hours and print date-time labels rather than raw numbers.
+     */
+    private static DataFrame hourlyData() {
+        var n = 24;
+        var when = new java.time.LocalDateTime[n];
+        var reading = new double[n];
+        var start = java.time.LocalDateTime.of(2010, 1, 1, 0, 0);
+        for (var i = 0; i < n; i++) {
+            when[i] = start.plusHours(i);
+            reading[i] = 4.0 + 3.0 * Math.sin(i / 3.0);
+        }
+        return DataFrame.byColumn("when", "reading")
+                .of(Series.of(when), Series.ofDouble(reading));
+    }
+
+    private static Plot<DataFrame> timestampPlot() {
+        return Ggplot.ggplot(hourlyData(), Aes.aes().x("when").y("reading"))
+                .geoms(line())
+                .guides(Guides.none())
+                .theme(Theme.theme_bw())
+                .labs("hourly readings", "when", "reading");
     }
 
     private static Plot<DataFrame> samplePlotWithGuides(GuidePosition position) {
@@ -238,6 +274,48 @@ class SvgMatchesCanvasTest {
                    () -> String.format("the block at %s differs by %.1f grey levels between the canvas and"
                                        + " the SVG rendering, above the %.0f allowed",
                                        worstBlock, worstDelta, MAX_BLOCK_DELTA));
+    }
+
+    @Test
+    void timestampAxisMatchesBetweenBackends() throws Exception {
+        assumeTrue(JavaFxToolkitExtension.isToolkitUp());
+        // The point is the x axis: a timestamp axis emits its own break and
+        // label code, so the two backends have to agree on where the breaks and
+        // their text land, not merely on how much ink is drawn.
+        var fromCanvas = renderViaCanvas(timestampPlot());
+        var fromSvg = rasterize(renderToSvg(timestampPlot()));
+
+        var worst = 0.0;
+        var worstAt = "";
+        for (var by = TITLE_BAND; by + BLOCK <= HEIGHT; by += BLOCK) {
+            for (var bx = 0; bx + BLOCK <= WIDTH; bx += BLOCK) {
+                var delta = Math.abs(meanBrightness(fromCanvas, bx, by) - meanBrightness(fromSvg, bx, by));
+                if (delta > worst) {
+                    worst = delta;
+                    worstAt = "(" + bx + "," + by + ")";
+                }
+            }
+        }
+
+        double worstDelta = worst;
+        String worstBlock = worstAt;
+        assertTrue(inkFraction(fromCanvas) > 0.005, "the reference rendering itself must contain content");
+
+        assertTrue(worstDelta <= MAX_BLOCK_DELTA,
+                   () -> String.format("the timestamp plot's block at %s differs by %.1f grey levels between"
+                                       + " the canvas and the SVG rendering, above the %.0f allowed",
+                                       worstBlock, worstDelta, MAX_BLOCK_DELTA));
+    }
+
+    @Test
+    void aTemporalColumnOnTheVerticalAxisRenders() throws Exception {
+        assumeTrue(JavaFxToolkitExtension.isToolkitUp());
+        // A line with the timestamp on y, not x: the averaging path must resolve
+        // the temporal position through the scale, not cast it to a Number.
+        var plot = SeattleWeatherPlots.createFlippedTemperature();
+        var svg = renderToSvg(plot);
+        assertTrue(svg.contains("<path"), "the line must project to SVG path geometry");
+        assertNotNull(renderViaCanvas(plot), "the canvas backend must render the same figure");
     }
 
     @Test

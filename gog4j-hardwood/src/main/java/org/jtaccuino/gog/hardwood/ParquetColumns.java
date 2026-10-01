@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +85,8 @@ final class ParquetColumns {
         if (logical instanceof LogicalType.DateType) {
             return rows.getDate(name);
         }
-        if (logical instanceof LogicalType.TimestampType) {
-            return rows.getTimestamp(name);
+        if (logical instanceof LogicalType.TimestampType timestamp) {
+            return decodeTimestamp(rows, name, timestamp);
         }
         if (logical instanceof LogicalType.DecimalType) {
             BigDecimal decimal = rows.getDecimal(name);
@@ -107,9 +108,30 @@ final class ParquetColumns {
             case INT64 -> rows.getLong(name);
             case FLOAT -> (double) rows.getFloat(name);
             case DOUBLE -> rows.getDouble(name);
+            // INT96 has no zone semantics of its own, so it decodes as an
+            // instant on Parquet's own convention of UTC nanoseconds.
             case INT96 -> rows.getTimestamp(name);
             case BYTE_ARRAY, FIXED_LEN_BYTE_ARRAY -> decodeBinary(rows.getBinary(name));
         };
+    }
+
+    /**
+     * Decodes a timestamp according to its zone convention, which the Parquet
+     * logical type states explicitly rather than leaving to be guessed.
+     * <p>
+     * {@code isAdjustedToUTC} means the stored count is an offset from
+     * 1970-01-01T00:00:00Z, so the value is an {@link Instant}. When it is
+     * false the count is a wall-clock reading with no zone, so the value is a
+     * {@link LocalDateTime} — which {@code Temporals} then reads as UTC, the
+     * same reading the writing side used.
+     *
+     * @param rows      the row reader positioned on the current row
+     * @param name      the column name
+     * @param timestamp the column's timestamp logical type
+     * @return an {@link Instant} for a UTC-adjusted column, else a {@link LocalDateTime}
+     */
+    private static Object decodeTimestamp(RowReader rows, String name, LogicalType.TimestampType timestamp) {
+        return timestamp.isAdjustedToUTC() ? rows.getTimestamp(name) : rows.getLocalTimestamp(name);
     }
 
     /**

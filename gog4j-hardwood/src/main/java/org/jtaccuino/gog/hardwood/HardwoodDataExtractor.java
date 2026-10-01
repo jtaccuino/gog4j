@@ -72,11 +72,7 @@ public class HardwoodDataExtractor implements DataExtractor<HardwoodDataFrame> {
 
     @Override
     public ColumnType columnType(HardwoodDataFrame df, String columnName) {
-        return switch (df.kind(columnName)) {
-            case NUMBER -> ColumnType.NUMBER;
-            case DATE -> ColumnType.DATE;
-            case TEXT -> ColumnType.TEXT;
-        };
+        return df.kind(columnName).columnType();
     }
 
     @Override
