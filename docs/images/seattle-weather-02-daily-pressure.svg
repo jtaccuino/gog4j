@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="560" viewBox="0 0 900 560">
+<defs>
+<clipPath id="clip0"><path d="M66 50h784v460h-784Z"/></clipPath>
+<clipPath id="clip1"><path d="M66 50h784v460h-784Z"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="900" height="560" fill="#ffffff"/>
+<text x="450" y="25" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#111111" paint-order="stroke">Hourly Pressure</text>
+<rect x="66" y="50" width="784" height="460" fill="#ebebeb"/>
+<line x1="132.62" y1="50" x2="132.62" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="225.59" y1="50" x2="225.59" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="318.55" y1="50" x2="318.55" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="411.52" y1="50" x2="411.52" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="504.48" y1="50" x2="504.48" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="597.45" y1="50" x2="597.45" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="690.41" y1="50" x2="690.41" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="783.38" y1="50" x2="783.38" y2="510" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="451.07" x2="850" y2="451.07" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="375.04" x2="850" y2="375.04" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="299.01" x2="850" y2="299.01" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="222.98" x2="850" y2="222.98" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="146.94" x2="850" y2="146.94" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="66" y1="70.91" x2="850" y2="70.91" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="93.89" y1="50" x2="93.89" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="117.13" y1="50" x2="117.13" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="140.37" y1="50" x2="140.37" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="186.85" y1="50" x2="186.85" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="210.09" y1="50" x2="210.09" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="233.34" y1="50" x2="233.34" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="279.82" y1="50" x2="279.82" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="303.06" y1="50" x2="303.06" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="326.3" y1="50" x2="326.3" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="372.78" y1="50" x2="372.78" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="396.02" y1="50" x2="396.02" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="419.26" y1="50" x2="419.26" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="465.75" y1="50" x2="465.75" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="488.99" y1="50" x2="488.99" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="512.23" y1="50" x2="512.23" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="558.71" y1="50" x2="558.71" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="581.95" y1="50" x2="581.95" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="605.19" y1="50" x2="605.19" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="651.68" y1="50" x2="651.68" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="674.92" y1="50" x2="674.92" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="698.16" y1="50" x2="698.16" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="744.64" y1="50" x2="744.64" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="767.88" y1="50" x2="767.88" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="791.12" y1="50" x2="791.12" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="837.6" y1="50" x2="837.6" y2="510" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="508.1" x2="850" y2="508.1" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="489.09" x2="850" y2="489.09" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="470.08" x2="850" y2="470.08" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="432.07" x2="850" y2="432.07" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="413.06" x2="850" y2="413.06" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="394.05" x2="850" y2="394.05" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="356.03" x2="850" y2="356.03" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="337.02" x2="850" y2="337.02" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="318.02" x2="850" y2="318.02" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="280" x2="850" y2="280" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="260.99" x2="850" y2="260.99" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="241.98" x2="850" y2="241.98" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="203.97" x2="850" y2="203.97" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="184.96" x2="850" y2="184.96" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="165.95" x2="850" y2="165.95" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="127.93" x2="850" y2="127.93" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="108.93" x2="850" y2="108.93" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="89.92" x2="850" y2="89.92" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="51.9" x2="850" y2="51.9" stroke="#ffffff" stroke-width="0.4"/>
+<line x1="66" y1="510" x2="850" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="66" y1="50" x2="66" y2="510" stroke="#333333" stroke-width="1"/>
+<line x1="132.62" y1="510" x2="132.62" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="132.62" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 02</text>
+<line x1="225.59" y1="510" x2="225.59" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="225.59" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 05</text>
+<line x1="318.55" y1="510" x2="318.55" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="318.55" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 08</text>
+<line x1="411.52" y1="510" x2="411.52" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="411.52" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 11</text>
+<line x1="504.48" y1="510" x2="504.48" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="504.48" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 14</text>
+<line x1="597.45" y1="510" x2="597.45" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="597.45" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 17</text>
+<line x1="690.41" y1="510" x2="690.41" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="690.41" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 20</text>
+<line x1="783.38" y1="510" x2="783.38" y2="515" stroke="#333333" stroke-width="1"/>
+<text x="783.38" y="524" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#555555" paint-order="stroke">2010-01-01 23</text>
+<line x1="66" y1="451.07" x2="61" y2="451.07" stroke="#333333" stroke-width="1"/>
+<text x="56" y="455.07" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1016.4</text>
+<line x1="66" y1="375.04" x2="61" y2="375.04" stroke="#333333" stroke-width="1"/>
+<text x="56" y="379.04" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1016.6</text>
+<line x1="66" y1="299.01" x2="61" y2="299.01" stroke="#333333" stroke-width="1"/>
+<text x="56" y="303.01" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1016.8</text>
+<line x1="66" y1="222.98" x2="61" y2="222.98" stroke="#333333" stroke-width="1"/>
+<text x="56" y="226.98" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1017</text>
+<line x1="66" y1="146.94" x2="61" y2="146.94" stroke="#333333" stroke-width="1"/>
+<text x="56" y="150.94" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1017.2</text>
+<line x1="66" y1="70.91" x2="61" y2="70.91" stroke="#333333" stroke-width="1"/>
+<text x="56" y="74.91" font-family="sans-serif" font-size="9" text-anchor="end" fill="#555555" paint-order="stroke">1017.4</text>
+<g clip-path="url(#clip0)">
+<g clip-path="url(#clip1)">
+<g fill="#e31a1c" stroke="#9f1214" stroke-width="1"><circle cx="101.64" cy="375.04" r="4.5"/><circle cx="132.62" cy="375.04" r="4.5"/><circle cx="163.61" cy="337.02" r="4.5"/><circle cx="194.6" cy="337.02" r="4.5"/><circle cx="225.59" cy="413.06" r="4.5"/><circle cx="256.58" cy="451.07" r="4.5"/><circle cx="287.57" cy="413.06" r="4.5"/><circle cx="318.55" cy="375.04" r="4.5"/><circle cx="349.54" cy="222.98" r="4.5"/><circle cx="380.53" cy="70.91" r="4.5"/><circle cx="411.52" cy="70.91" r="4.5"/><circle cx="442.51" cy="184.96" r="4.5"/><circle cx="473.49" cy="337.02" r="4.5"/><circle cx="504.48" cy="451.07" r="4.5"/><circle cx="535.47" cy="489.09" r="4.5"/><circle cx="566.46" cy="451.07" r="4.5"/><circle cx="597.45" cy="413.06" r="4.5"/><circle cx="628.43" cy="451.07" r="4.5"/><circle cx="659.42" cy="451.07" r="4.5"/><circle cx="690.41" cy="451.07" r="4.5"/><circle cx="721.4" cy="413.06" r="4.5"/><circle cx="752.39" cy="413.06" r="4.5"/><circle cx="783.38" cy="413.06" r="4.5"/><circle cx="814.36" cy="184.96" r="4.5"/></g>
+</g>
+</g>
+<text x="458" y="545" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">1 January 2010</text>
+<g transform="translate(21.52,280)">
+<g transform="rotate(-90)">
+<text x="0" y="0" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#444444" paint-order="stroke">Pressure (hPa)</text>
+</g>
+</g>
+</svg>

@@ -15,7 +15,11 @@
  */
 package org.jtaccuino.gog.spi;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -71,10 +75,19 @@ public interface DataExtractor<DF> {
     enum ColumnType {
         /** Numeric values ({@link Number} and the listed numeric primitives). */
         NUMBER("int", "long", "double", "float"),
-        /** Temporal values, e.g. {@link LocalDate}. */
+        /** Calendar dates without a time of day, e.g. {@link LocalDate}, stored as epoch days. */
         DATE("LocalDate"),
+        /**
+         * Date-time values carrying a time of day, e.g. {@link Instant} or
+         * {@link LocalDateTime}, stored as epoch milliseconds.
+         * <p>
+         * Distinct from {@link #DATE} because the two need different axis
+         * granularity: a date axis breaks by year, a timestamp axis by second
+         * through month.
+         */
+        TIMESTAMP("Instant", "OffsetDateTime", "ZonedDateTime", "LocalDateTime"),
         /** Anything else, e.g. categories, booleans, free text. */
-        TEXT();
+        TEXT;
 
         @SuppressWarnings("ImmutableEnumChecker") // the Set.of(...) result is immutable, but Set isn't proven so
         private final Set<String> schemaNames;
@@ -98,16 +111,65 @@ public interface DataExtractor<DF> {
                     .findFirst()
                     .orElse(Number.class.isAssignableFrom(type) ? NUMBER : TEXT);
         }
+
+        /**
+         * Classifies a single raw column value, the one rule both the sampling
+         * default {@link DataExtractor#columnType} and schema-less extractors
+         * share. The first non-null value decides; a column of all nulls is
+         * {@link ColumnType#TEXT}.
+         *
+         * @param value a raw column value, may be {@code null}
+         * @return the {@link ColumnType} the value belongs to
+         */
+        public static ColumnType ofValue(Object value) {
+            if (value instanceof LocalDate) return DATE;
+            if (value instanceof Instant || value instanceof OffsetDateTime
+                    || value instanceof ZonedDateTime || value instanceof LocalDateTime) {
+                return TIMESTAMP;
+            }
+            if (value instanceof Number) return NUMBER;
+            if (value instanceof String s) {
+                try {
+                    Double.parseDouble(s);
+                    return NUMBER;
+                } catch (NumberFormatException e) {
+                    return TEXT;
+                }
+            }
+            return TEXT;
+        }
+
+        /**
+         * Whether the type carries a position on a continuous, non-categorical axis.
+         *
+         * @param type the column type
+         * @return {@code true} for {@link #NUMBER}, {@link #DATE}, and {@link #TIMESTAMP}
+         */
+        public static boolean isContinuous(ColumnType type) {
+            return type == NUMBER || type == DATE || type == TIMESTAMP;
+        }
+
+        /**
+         * Whether the type is temporal, i.e. a {@link #DATE} or a {@link #TIMESTAMP}.
+         *
+         * @param type the column type
+         * @return {@code true} for {@link #DATE} and {@link #TIMESTAMP}
+         */
+        public static boolean isTemporal(ColumnType type) {
+            return type == DATE || type == TIMESTAMP;
+        }
     }
 
     /**
      * Determines the {@link ColumnType} of the values in a column.
      * <p>
-     * The default implementation inspects the first non-null value in the column:
-     * {@link Number} yields {@link ColumnType#NUMBER}, {@link LocalDate} yields
-     * {@link ColumnType#DATE}, and anything else yields {@link ColumnType#TEXT}.
-     * Implementations backed by type-aware DataFrames may override this to use the
-     * schema-provided type instead of sampling a value.
+     * The default implementation classifies the first non-null value with
+     * {@link ColumnType#ofValue(Object)}: {@link Number} yields
+     * {@link ColumnType#NUMBER}, {@link LocalDate} yields {@link ColumnType#DATE},
+     * an {@link Instant} yields {@link ColumnType#TIMESTAMP}, and anything else
+     * yields {@link ColumnType#TEXT}. Implementations backed by type-aware
+     * DataFrames may override this to use the schema-provided type instead of
+     * sampling a value.
      *
      * @param df the DataFrame object
      * @param columnName the name of the target column
@@ -115,18 +177,9 @@ public interface DataExtractor<DF> {
      */
     default ColumnType columnType(DF df, String columnName) {
         for (var v : getColumn(df, columnName)) {
-            if (v == null) continue;
-            if (v instanceof LocalDate) return ColumnType.DATE;
-            if (v instanceof Number) return ColumnType.NUMBER;
-            if (v instanceof String s) {
-                try {
-                    Double.parseDouble(s);
-                    return ColumnType.NUMBER;
-                } catch (NumberFormatException e) {
-                    return ColumnType.TEXT;
-                }
+            if (v != null) {
+                return ColumnType.ofValue(v);
             }
-            return ColumnType.TEXT;
         }
         return ColumnType.TEXT;
     }

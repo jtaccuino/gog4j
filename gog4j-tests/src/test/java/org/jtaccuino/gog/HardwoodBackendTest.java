@@ -26,6 +26,7 @@ import org.jtaccuino.gog.examples.hardwood.HardwoodGwasPlots;
 import org.jtaccuino.gog.hardwood.HardwoodDataExtractor;
 import org.jtaccuino.gog.hardwood.HardwoodDataFrame;
 import org.jtaccuino.gog.hardwood.data.HardwoodGwasDatasets;
+import org.jtaccuino.gog.hardwood.data.HardwoodSeattleWeatherDatasets;
 import org.jtaccuino.gog.render.SvgExporter;
 import org.jtaccuino.gog.spi.DataExtractor;
 import org.jtaccuino.gog.spi.DataExtractorRegistry;
@@ -60,6 +61,19 @@ class HardwoodBackendTest {
         assertEquals(DataExtractor.ColumnType.TEXT, extractor.columnType(table, "CHRBAND"));
         var range = extractor.getMinMax(table, "NEGLOG10P");
         assertTrue(range.max() > range.min(), "the Manhattan height must have a range");
+    }
+
+    @Test
+    void timestampColumnHasAFiniteEpochMilliRange() {
+        var extractor = new HardwoodDataExtractor();
+        var table = HardwoodSeattleWeatherDatasets.loadHourly();
+        assertEquals(DataExtractor.ColumnType.TIMESTAMP, extractor.columnType(table, "date"));
+        var range = extractor.getMinMax(table, "date");
+        assertTrue(Double.isFinite(range.min()) && Double.isFinite(range.max()),
+                "a timestamp range must be finite, not the categorical placeholder");
+        assertTrue(range.max() > range.min(), "a year of hourly readings spans a range");
+        assertTrue(range.min() > 1.0e12,
+                "the range must be epoch milliseconds, not days or raw ticks");
     }
 
     @Test

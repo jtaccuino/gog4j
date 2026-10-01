@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import org.jtaccuino.gog.coord.Coord;
 import org.jtaccuino.gog.coord.Coord3D;
 import org.jtaccuino.gog.coord.CoordPolar;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.render.DrawSurface;
 import org.jtaccuino.gog.scale.ContinuousColorScale;
 import org.jtaccuino.gog.scale.Scale;
@@ -363,7 +364,7 @@ public class GeomTile<DF> implements Layer<DF> {
      * @param <DF>    the DataFrame type
      * @param ext     the data extractor
      * @param df      the DataFrame
-     * @param column  the numeric or {@link java.time.LocalDate} column name
+     * @param column  the numeric or temporal column name
      * @return the estimated step, or {@code 1.0} if no gap could be derived
      */
     public static <DF> double estimateStep(DataExtractor<DF> ext, DF df, String column) {
@@ -374,6 +375,7 @@ public class GeomTile<DF> implements Layer<DF> {
         for (var v : raw) {
             if (v instanceof Number num) vals[k++] = num.doubleValue();
             else if (v instanceof LocalDate ld) vals[k++] = ld.toEpochDay();
+            else if (Temporals.isTimestamp(v)) vals[k++] = Temporals.toEpochMillis(v);
         }
         return estimateStep(vals, k);
     }

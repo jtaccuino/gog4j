@@ -1064,6 +1064,36 @@ import org.jtaccuino.gog.theme.ThemeConfigurator;
     }
 
     /**
+     * Marks each scale as a date or timestamp scale according to the column type
+     * of the aesthetic it maps, so the coordinates can break and label the axis in
+     * calendar terms.
+     * <p>
+     * Both scale-construction sites funnel through here, because a timestamp
+     * column that only one of the two sites knows about would render a raw
+     * millisecond axis on a faceted plot. Under {@code coordFlip()} each scale
+     * maps the other aesthetic, hence the flag swap.
+     *
+     * @param flipped      whether the coordinate swaps the x and y axes
+     * @param scaleX       the horizontal scale
+     * @param scaleY       the vertical scale
+     * @param xColumnType  the column type of the x aesthetic, or {@code null} when unmapped
+     * @param yColumnType  the column type of the y aesthetic, or {@code null} when unmapped
+     */
+    private static void applyTimeAxisFlags(boolean flipped, Scale scaleX, Scale scaleY,
+                                           DataExtractor.ColumnType xColumnType, DataExtractor.ColumnType yColumnType) {
+        var xType = flipped ? yColumnType : xColumnType;
+        var yType = flipped ? xColumnType : yColumnType;
+        if (scaleX != null) {
+            scaleX.setDateScale(xType == DataExtractor.ColumnType.DATE);
+            scaleX.setTimestampScale(xType == DataExtractor.ColumnType.TIMESTAMP);
+        }
+        if (scaleY != null) {
+            scaleY.setDateScale(yType == DataExtractor.ColumnType.DATE);
+            scaleY.setTimestampScale(yType == DataExtractor.ColumnType.TIMESTAMP);
+        }
+    }
+
+    /**
      * The width of a data range in transformed (scale) units, mirroring the
      * span {@link Scale} maps onto screen pixels: forward-transform both
      * clamped endpoints and measure the distance between them.
@@ -2843,8 +2873,8 @@ import org.jtaccuino.gog.theme.ThemeConfigurator;
         var yTrain = yCol != null ? yCol : positionTrainColumn(descriptor.aes(), false);
         boolean xIsDiscrete = xTrain != null && descriptor.extractor().columnType(descriptor.data(), xTrain) == DataExtractor.ColumnType.TEXT;
         boolean yIsDiscrete = yTrain != null && descriptor.extractor().columnType(descriptor.data(), yTrain) == DataExtractor.ColumnType.TEXT;
-        boolean xIsDate = xTrain != null && descriptor.extractor().columnType(descriptor.data(), xTrain) == DataExtractor.ColumnType.DATE;
-        boolean yIsDate = yTrain != null && descriptor.extractor().columnType(descriptor.data(), yTrain) == DataExtractor.ColumnType.DATE;
+        var xColumnType = xTrain != null ? descriptor.extractor().columnType(descriptor.data(), xTrain) : null;
+        var yColumnType = yTrain != null ? descriptor.extractor().columnType(descriptor.data(), yTrain) : null;
 
         List<Object> xCategories = null;
         List<Object> yCategories = null;
@@ -3014,16 +3044,11 @@ import org.jtaccuino.gog.theme.ThemeConfigurator;
                         : new Scale(dataMinY, dataMaxY, innerYMin, innerYMax, yTransform);
             }
 
-            // Date scales remember their column type, so a polar coord's theta
-            // axis can label epoch-day positions as years just like a Cartesian
-            // axis does. Under coordFlip() each scale maps the other aesthetic.
-            if (descriptor.coord().isFlipped()) {
-                scaleX.setDateScale(yIsDate);
-                scaleY.setDateScale(xIsDate);
-            } else {
-                scaleX.setDateScale(xIsDate);
-                scaleY.setDateScale(yIsDate);
-            }
+            // Temporal scales remember their column type, so a polar coord's
+            // theta axis can label epoch-day and epoch-millisecond positions as
+            // dates and times just like a Cartesian axis does. Under coordFlip()
+            // each scale maps the other aesthetic.
+            applyTimeAxisFlags(descriptor.coord().isFlipped(), scaleX, scaleY, xColumnType, yColumnType);
 
             // Logarithmic y-axis (scaleYLog10): apply to whichever scale maps the y data.
             // For Manhattan raw-p plots, reverse it so the most significant (smallest)
@@ -3234,8 +3259,8 @@ import org.jtaccuino.gog.theme.ThemeConfigurator;
         var coordColY = yTrain;
         var xIsDiscrete = xTrain != null && descriptor.extractor().columnType(descriptor.data(), xTrain) == DataExtractor.ColumnType.TEXT;
         var yIsDiscrete = yTrain != null && descriptor.extractor().columnType(descriptor.data(), yTrain) == DataExtractor.ColumnType.TEXT;
-        var xIsDate = xTrain != null && descriptor.extractor().columnType(descriptor.data(), xTrain) == DataExtractor.ColumnType.DATE;
-        var yIsDate = yTrain != null && descriptor.extractor().columnType(descriptor.data(), yTrain) == DataExtractor.ColumnType.DATE;
+        var xColumnType = xTrain != null ? descriptor.extractor().columnType(descriptor.data(), xTrain) : null;
+        var yColumnType = yTrain != null ? descriptor.extractor().columnType(descriptor.data(), yTrain) : null;
         var applyDefaultExpansion = descriptor.geoms().stream().anyMatch(Layer::wantsDefaultExpansion);
 
         var xAxisTransform = axisTransform(descriptor.coord(), descriptor.scaleSpec().getXTransform(), xIsDiscrete, "x");
@@ -3471,13 +3496,7 @@ import org.jtaccuino.gog.theme.ThemeConfigurator;
                     scaleY = yDom.discrete() ? Scale.createDiscrete(yDom.cats(), innerYMin, innerYMax)
                             : new Scale(yDom.num().min(), yDom.num().max(), innerYMin, innerYMax, yTransform);
                 }
-                if (descriptor.coord().isFlipped()) {
-                    scaleX.setDateScale(yIsDate);
-                    scaleY.setDateScale(xIsDate);
-                } else {
-                    scaleX.setDateScale(xIsDate);
-                    scaleY.setDateScale(yIsDate);
-                }
+                applyTimeAxisFlags(descriptor.coord().isFlipped(), scaleX, scaleY, xColumnType, yColumnType);
                 if (descriptor.scaleSpec().isYLog() && !yIsDiscrete
                         && !(descriptor.coord() instanceof Coord2D c2d && c2d.transY() != null)) {
                     var yScale = descriptor.coord().isFlipped() ? scaleX : scaleY;

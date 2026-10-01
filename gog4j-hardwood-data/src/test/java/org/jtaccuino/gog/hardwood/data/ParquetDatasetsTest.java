@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Instant;
 import org.jtaccuino.gog.hardwood.HardwoodDataExtractor;
 import org.jtaccuino.gog.hardwood.HardwoodDataFrame;
 import org.junit.jupiter.api.Test;
@@ -83,6 +84,32 @@ class ParquetDatasetsTest {
         HardwoodDataFrame qq = HardwoodGwasDatasets.qqPlot(HardwoodGwasDatasets.loadManhattan());
         assertEquals(HardwoodGwasDatasets.UNIFORM_SAMPLE_COUNT, EXTRACTOR.getRowCount(qq));
         assertTrue(qq.columnNames().containsAll(java.util.List.of("EXPECTED", "OBSERVED", "BAND")));
+    }
+
+    @Test
+    void seattleWeatherReadsBackAsTimestamps() {
+        HardwoodDataFrame weather = HardwoodSeattleWeatherDatasets.loadHourly();
+        assertEquals(8759, EXTRACTOR.getRowCount(weather));
+        assertTrue(weather.columnNames().contains("date"));
+        assertEquals(HardwoodDataExtractor.ColumnType.TIMESTAMP,
+                EXTRACTOR.columnType(weather, "date"));
+        assertEquals(HardwoodDataExtractor.ColumnType.NUMBER,
+                EXTRACTOR.columnType(weather, "wind"));
+        // The converter writes a zone-less source reading as a UTC-adjusted
+        // TIMESTAMP, so it decodes back to the same instant it started as.
+        var first = EXTRACTOR.getColumn(weather, "date").get(0);
+        assertEquals(Instant.parse("2010-01-01T01:00:00Z"), first);
+        assertEquals(Instant.parse("2010-01-01T02:00:00Z"),
+                EXTRACTOR.getColumn(weather, "date").get(1),
+                "hourly data must keep its hour");
+    }
+
+    @Test
+    void seattleWeatherFirstDayIsDerivedFromTheYear() {
+        HardwoodDataFrame day = HardwoodSeattleWeatherDatasets.loadFirstDay();
+        assertEquals(24, EXTRACTOR.getRowCount(day));
+        assertEquals(HardwoodDataExtractor.ColumnType.TIMESTAMP,
+                EXTRACTOR.columnType(day, "date"));
     }
 
     @Test

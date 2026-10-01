@@ -48,6 +48,7 @@ public class Scale {
     private Map<Object, Integer> categoryIndex;
     private Map<Double, String> positionLabels;
     private boolean dateScale;
+    private boolean timestampScale;
 
     /**
      * Creates a scale mapping the given data range onto the given pixel range.
@@ -148,6 +149,23 @@ public class Scale {
 
     /** {@return whether this scale maps a date column} */
     public boolean isDateScale() { return dateScale; }
+
+    /**
+     * Marks this scale as spanning a timestamp column, whose values are stored as
+     * epoch milliseconds. Axes then generate calendar-aligned breaks via
+     * {@link org.jtaccuino.gog.data.Temporals} and format them as dates and
+     * times instead of printing the raw millisecond count.
+     * <p>
+     * Kept separate from {@link #isDateScale()} because a timestamp axis needs
+     * a different break ladder than a date axis: it can descend to hours,
+     * minutes and seconds, and its labels carry a time of day.
+     *
+     * @param timestampScale {@code true} when the scale maps a timestamp column
+     */
+    public void setTimestampScale(boolean timestampScale) { this.timestampScale = timestampScale; }
+
+    /** {@return whether this scale maps a timestamp column} */
+    public boolean isTimestampScale() { return timestampScale; }
 
     /**
      * Registers explicit tick positions mapped to custom label strings.

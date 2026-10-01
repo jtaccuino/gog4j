@@ -15,7 +15,6 @@
  */
 package org.jtaccuino.gog.coord;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.text.Text;
@@ -23,6 +22,7 @@ import javafx.scene.text.TextAlignment;
 import org.jtaccuino.gog.Aes;
 import org.jtaccuino.gog.AesValue;
 import org.jtaccuino.gog.MinMax;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.render.DrawSurface;
 import org.jtaccuino.gog.scale.Scale;
 import org.jtaccuino.gog.scale.ScaleSpec;
@@ -39,6 +39,9 @@ import org.jtaccuino.gog.theme.Theme;
  * auto-rotation of overlapping x-axis labels, and delegate-to-scale label generation.
  */
 public class Coord2D implements Coord {
+
+    /** The number of breaks an axis aims for, and so the span a temporal axis sizes its granularity to. */
+    private static final int DEFAULT_BREAKS = 5;
 
     private boolean flipped;
     private MinMax xLim, yLim;
@@ -161,9 +164,9 @@ public class Coord2D implements Coord {
      * @return {@code true} if the column is date-typed
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
-    private static boolean isDateColumn(DataExtractor<?> extractor, Object df, String column) {
-        if (column == null) return false;
-        return ((DataExtractor) extractor).columnType(df, column) == DataExtractor.ColumnType.DATE;
+    private static DataExtractor.ColumnType columnTypeOf(DataExtractor<?> extractor, Object df, String column) {
+        if (column == null) return DataExtractor.ColumnType.TEXT;
+        return ((DataExtractor) extractor).columnType(df, column);
     }
 
     /** Renders the panel background fill, grid lines, axis lines, and tick labels.
@@ -175,31 +178,27 @@ public class Coord2D implements Coord {
         double maxYPix = scaleY.maxPixel();
         widestYLabelWidth = 0.0;
 
-        var isXDate = isDateColumn(extractor, df, AesValue.rawColumn(aes.xValue()));
-        var isYDate = isDateColumn(extractor, df, AesValue.rawColumn(aes.yValue()));
+        var xType = columnTypeOf(extractor, df, AesValue.rawColumn(aes.xValue()));
+        var yType = columnTypeOf(extractor, df, AesValue.rawColumn(aes.yValue()));
 
         if (flipped) {
-            var tmp = isXDate;
-            isXDate = isYDate;
-            isYDate = tmp;
+            var tmp = xType;
+            xType = yType;
+            yType = tmp;
         }
 
         List<Double> xTicks;
         if (scaleSpec.hasXBreaks()) {
             xTicks = scaleSpec.getXBreaks();
-        } else if (isXDate) {
-            xTicks = generateDateTicks(scaleX);
         } else {
-            xTicks = scaleX.calculateTicks(5, null);
+            xTicks = generateTemporalTicks(scaleX, xType, 5);
         }
 
         List<Double> yTicks;
         if (scaleSpec.hasYBreaks()) {
             yTicks = scaleSpec.getYBreaks();
-        } else if (isYDate) {
-            yTicks = generateDateTicks(scaleY);
         } else {
-            yTicks = scaleY.calculateTicks(5, null);
+            yTicks = generateTemporalTicks(scaleY, yType, 5);
         }
 
         // --- Panel background fill (masks grid lines outside panel) ---
@@ -259,7 +258,7 @@ public class Coord2D implements Coord {
         var helperText = new Text();
         helperText.setFont(labelFont);
         for (var i = 0; i < xTicks.size(); i++) {
-            helperText.setText(xLabel(xTicks.get(i), i, isXDate));
+            helperText.setText(xLabel(xTicks.get(i), i, xType));
             totalLabelsWidthNeeded += helperText.getLayoutBounds().getWidth() + 12.0;
         }
 
@@ -277,7 +276,7 @@ public class Coord2D implements Coord {
                 gc.strokeLine(px, xAxisPix, px, xAxisPix + (xLabelsTop ? -5 : 5));
             }
             if (drawXLabels) {
-                String label = xLabel(tick, i, isXDate);
+                String label = xLabel(tick, i, xType);
                 gc.save();
                 if (autoAngle == 0.0) {
                     gc.setTextAlign(TextAlignment.CENTER);
@@ -306,7 +305,7 @@ public class Coord2D implements Coord {
                 gc.strokeLine(yAxisPix, py, yAxisPix + (yLabelsRight ? 5 : -5), py);
             }
             if (drawYLabels) {
-                String label = yLabel(tick, i, isYDate);
+                String label = yLabel(tick, i, yType);
                 // Right-hand labels read left-to-right away from the spine.
                 gc.setTextAlign(yLabelsRight ? TextAlignment.LEFT : TextAlignment.RIGHT);
                 gc.fillText(label, yAxisPix + (yLabelsRight ? 10 : -10), py + 4);
@@ -447,10 +446,10 @@ public class Coord2D implements Coord {
 
     /**
      * Resolves the x-tick label: an explicit label supplied alongside custom
-     * breaks wins, then the scale's own labels (discrete scales), then a date
-     * year or plain number.
+     * breaks wins, then the scale's own labels (discrete scales), then a label
+     * the column type dictates — a year, a date-time, or a plain number.
      */
-    private String xLabel(double tick, int breakIndex, boolean isDate) {
+    private String xLabel(double tick, int breakIndex, DataExtractor.ColumnType type) {
         if (scaleSpec != null && scaleSpec.hasXBreaks()) {
             var explicit = scaleSpec.xLabelAt(breakIndex);
             if (explicit != null) return explicit;
@@ -458,15 +457,14 @@ public class Coord2D implements Coord {
         if (scaleX != null && scaleX.getTickLabels() != null) {
             return scaleX.getLabel(tick);
         }
-        if (isDate) return String.valueOf(LocalDate.ofEpochDay(Math.round(tick)).getYear());
-        return Scale.formatTick(tick);
+        return temporalLabel(tick, type, scaleX);
     }
 
     /**
      * Resolves the y-tick label, following the same precedence as
-     * {@link #xLabel(double, int, boolean)}.
+     * {@link #xLabel(double, int, DataExtractor.ColumnType)}.
      */
-    private String yLabel(double tick, int breakIndex, boolean isDate) {
+    private String yLabel(double tick, int breakIndex, DataExtractor.ColumnType type) {
         if (scaleSpec != null && scaleSpec.hasYBreaks()) {
             var explicit = scaleSpec.yLabelAt(breakIndex);
             if (explicit != null) return explicit;
@@ -474,48 +472,48 @@ public class Coord2D implements Coord {
         if (scaleY != null && scaleY.getTickLabels() != null) {
             return scaleY.getLabel(tick);
         }
-        if (isDate) return String.valueOf(LocalDate.ofEpochDay(Math.round(tick)).getYear());
-        return Scale.formatTick(tick);
+        return temporalLabel(tick, type, scaleY);
     }
 
     /**
-     * Generates year-based tick positions for date-scaled axes.
-     * The year-step adapts to the total year range (1, 2, 10, 20, or 25).
+     * Generates tick positions for an axis whose column type decides the ladder:
+     * a date axis breaks by year, a timestamp axis by whatever
+     * calendar granularity the span affords, and anything else falls back to
+     * the scale's own "nice" breaks.
+     *
+     * @param scale  the axis scale
+     * @param type   the column type mapped to the axis
+     * @param target the wanted number of breaks
+     * @return the break positions
      */
-    private List<Double> generateDateTicks(Scale scale) {
-        List<Double> ticks = new ArrayList<>();
-        var startYear = LocalDate.ofEpochDay((long) scale.minData()).getYear();
-        var endYear = LocalDate.ofEpochDay((long) scale.maxData()).getYear();
-        var yearRange = endYear - startYear;
-
-        int yearStep = 10;
-        if (yearRange > 100) {
-            yearStep = 25;
-        } else if (yearRange > 40) {
-            yearStep = 20;
-        } else if (yearRange > 10) {
-            yearStep = 2;
-        } else {
-            yearStep = 1;
+    private static List<Double> generateTemporalTicks(Scale scale, DataExtractor.ColumnType type, int target) {
+        if (type == DataExtractor.ColumnType.DATE) {
+            return Temporals.dateTicks(scale.minData(), scale.maxData());
         }
-
-        var currentYear = (startYear / yearStep) * yearStep;
-        if (currentYear < startYear) {
-            currentYear += yearStep;
+        if (type == DataExtractor.ColumnType.TIMESTAMP) {
+            return Temporals.timestampTicks(scale.minData(), scale.maxData(), target);
         }
+        return scale.calculateTicks(target, null);
+    }
 
-        while (currentYear <= endYear) {
-            var epochDay = (double) LocalDate.of(currentYear, 1, 1).toEpochDay();
-            if (epochDay >= scale.minData() && epochDay <= scale.maxData()) {
-                ticks.add(epochDay);
-            }
-            currentYear += yearStep;
+    /**
+     * Resolves the label of a break for an axis whose column type decides the
+     * format: a date break reads as a year, a timestamp break at the granularity
+     * its span affords, and anything else as a plain number.
+     *
+     * @param tick  the break position in data units
+     * @param type  the column type mapped to the axis
+     * @param scale the axis scale, consulted only for a timestamp axis
+     * @return the formatted label
+     */
+    private static String temporalLabel(double tick, DataExtractor.ColumnType type, Scale scale) {
+        if (type == DataExtractor.ColumnType.DATE) {
+            return Temporals.dateLabel(tick);
         }
-
-        if (ticks.isEmpty()) {
-            ticks.add(scale.minData());
+        if (type == DataExtractor.ColumnType.TIMESTAMP) {
+            var granularity = Temporals.granularityOf(scale.minData(), scale.maxData(), DEFAULT_BREAKS);
+            return Temporals.timestampLabel(tick, granularity);
         }
-
-        return ticks;
+        return Scale.formatTick(tick);
     }
 }

@@ -86,6 +86,13 @@ public class GeomLine<DF> implements Layer<DF> {
         var yData = ext.getColumn(df, aes.y());
         var n = ext.getRowCount(df);
         if (n < 2) return;
+        // Resolve the y positions through the scale, so a temporal (or any
+        // non-Number) y column averages its data position rather than being
+        // cast straight to a Number and failing.
+        var yPositions = new ArrayList<Double>(yData.size());
+        for (var v : yData) {
+            yPositions.add(v == null ? null : sy.toData(v));
+        }
 
         // Grouping follows group, then colour, then linetype; a linetype-only
         // mapping splits the data into groups without assigning any colour.
@@ -115,7 +122,7 @@ public class GeomLine<DF> implements Layer<DF> {
             gc.setLineDashes(singleDash(linTypeScale));
             var indices = createSequentialIndices(n);
             sortIndicesByX(indices, xData, sx);
-            drawPointsAsLine(gc, xData, yData, sx, sy, coord, indices);
+            drawPointsAsLine(gc, xData, yPositions, sx, sy, coord, indices);
         } else {
             var groupData = ext.getColumn(df, groupCol);
             var groups = new LinkedHashMap<Object, List<Integer>>();
@@ -133,7 +140,7 @@ public class GeomLine<DF> implements Layer<DF> {
                 gc.setStroke(color != null ? color : defaultColor);
                 double[] dash = dashByGroup ? linTypeScale.patternFor(entry.getKey()) : singleDash(linTypeScale);
                 gc.setLineDashes(dash);
-                drawPointsAsLine(gc, xData, yData, sx, sy, coord, indices);
+                drawPointsAsLine(gc, xData, yPositions, sx, sy, coord, indices);
             }
             gc.setLineDashes(null);
         }
@@ -158,13 +165,13 @@ public class GeomLine<DF> implements Layer<DF> {
         indices.sort(Comparator.comparingDouble(idx -> sx.toData(xData.get(idx))));
     }
 
-    private void drawPointsAsLine(DrawSurface gc, List<?> xData, List<?> yData, Scale sx, Scale sy,
+    private void drawPointsAsLine(DrawSurface gc, List<?> xData, List<Double> yPositions, Scale sx, Scale sy,
                                   Coord coord, List<Integer> indices) {
         gc.beginPath();
         var first = true;
 
         // Computation is fully delegated to the configured strategy object
-        var smoothedY = averaging.apply(indices, yData);
+        var smoothedY = averaging.apply(indices, yPositions);
 
         for (var i = 0; i < indices.size(); i++) {
             var idx = indices.get(i);
@@ -176,8 +183,8 @@ public class GeomLine<DF> implements Layer<DF> {
             double xAsDouble = sx.toData(rawX);
             // Route the pair through the coordinate system so a polar layout wraps
             // the line around the disc instead of drawing it in Cartesian pixels.
-            var cx = coord.xPixel(sx, sy, xAsDouble, ((Number) rawY).doubleValue());
-            var cy = coord.yPixel(sx, sy, xAsDouble, ((Number) rawY).doubleValue());
+            var cx = coord.xPixel(sx, sy, xAsDouble, rawY);
+            var cy = coord.yPixel(sx, sy, xAsDouble, rawY);
 
             if (first) {
                 gc.moveTo(cx, cy);

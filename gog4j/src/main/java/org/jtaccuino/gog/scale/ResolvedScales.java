@@ -151,9 +151,10 @@ public final class ResolvedScales<DF> {
     }
 
     /**
-     * Determines the column type, honouring stat-computed columns: a number
-     * column (raw or computed) reports {@code NUMBER}, otherwise the raw
-     * extractor's classification is used.
+     * Determines the column type, honouring stat-computed columns: a computed
+     * column is classified by {@link DataExtractor.ColumnType#ofValue(Object)},
+     * so a stat that carries dates or date-times keeps its temporal type instead
+     * of degrading to text. Otherwise the raw extractor's classification is used.
      *
      * @param columnName the aesthetic value
      * @return the resolved {@link DataExtractor.ColumnType}
@@ -161,9 +162,7 @@ public final class ResolvedScales<DF> {
     private DataExtractor.ColumnType columnType(String columnName) {
         var name = resolveName(columnName);
         if (extraColumns.containsKey(name)) {
-            return allNumeric(extraColumns.get(name))
-                    ? DataExtractor.ColumnType.NUMBER
-                    : DataExtractor.ColumnType.TEXT;
+            return classify(extraColumns.get(name));
         }
         try {
             return ext.columnType(globalDf, name);
@@ -174,13 +173,20 @@ public final class ResolvedScales<DF> {
         }
     }
 
-    private static boolean allNumeric(List<?> values) {
+    /**
+     * Classifies a stat-computed column by its first non-null value, or
+     * {@link DataExtractor.ColumnType#TEXT} when the column holds no values.
+     *
+     * @param values the computed column values
+     * @return the resolved column type
+     */
+    private static DataExtractor.ColumnType classify(List<?> values) {
         for (var v : values) {
-            if (v != null && !(v instanceof Number)) {
-                return false;
+            if (v != null) {
+                return DataExtractor.ColumnType.ofValue(v);
             }
         }
-        return true;
+        return DataExtractor.ColumnType.TEXT;
     }
 
     /**

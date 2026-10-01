@@ -240,10 +240,37 @@ public class DflibDataExtractor implements DataExtractor<DataFrame> {
         return c1.and(c2);
     }
 
-    /** Shared schema-driven type inference for this extractor and its default min/max. */
+    /**
+     * Shared schema-driven type inference for this extractor and its default
+     * min/max.
+     * <p>
+     * The schema is authoritative when it can be. It cannot always be: a column
+     * produced by a transformation that boxes or re-orders values infers only
+     * {@code Object}, and an all-null column infers nothing at all. In both cases
+     * the series' own values are the only evidence, so the first non-null value
+     * decides — which is what keeps a timestamp column from degrading to text
+     * after a frame transformation.
+     *
+     * @param df         the data frame
+     * @param columnName the column to classify
+     * @return the resolved column type
+     */
     private static ColumnType inferType(DataFrame df, String columnName) {
-        var t = ColumnType.of(df.getColumn(columnName).getInferredType());
-        return t == null ? ColumnType.TEXT : t;
+        var series = df.getColumn(columnName);
+        var inferred = series.getInferredType();
+        // Only fall back to the values when the schema says nothing. A schema of
+        // String is a real answer, and re-reading it would turn a column of
+        // numeric strings into a NUMBER column, moving it off its text axis.
+        if (inferred == null || inferred == Object.class) {
+            for (int i = 0; i < series.size(); i++) {
+                var v = series.get(i);
+                if (v != null) {
+                    return ColumnType.ofValue(v);
+                }
+            }
+            return ColumnType.TEXT;
+        }
+        return ColumnType.of(inferred);
     }
 
     /**
@@ -253,6 +280,8 @@ public class DflibDataExtractor implements DataExtractor<DataFrame> {
      *   <li>Empty columns → {@code [0, 100]}</li>
      *   <li>All-null or fully categorical columns → {@code [0, 10]}</li>
      *   <li>{@link java.time.LocalDate} columns → epoch-day range</li>
+     *   <li>Date-time columns ({@link java.time.Instant}, {@link java.time.LocalDateTime})
+     *       → epoch-millisecond range</li>
      *   <li>Numeric or numeric-string columns → actual min/max of the raw values</li>
      * </ul>
      */

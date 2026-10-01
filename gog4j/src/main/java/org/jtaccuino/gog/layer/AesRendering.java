@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import org.jtaccuino.gog.Aes;
 import org.jtaccuino.gog.AesValue;
 import org.jtaccuino.gog.AesValueSupport;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.data.Values;
 import org.jtaccuino.gog.scale.ResolvedScales;
 import org.jtaccuino.gog.scale.Scale;
@@ -249,12 +250,12 @@ final class AesRendering {
 
     /**
      * Formats the hover value of the x position for a stat-geometry tooltip:
-     * the category name for a discrete axis, the date for a date axis, or the
-     * plain data value otherwise.
+     * the category name for a discrete axis, a date or date-time for a temporal
+     * axis, or the plain data value otherwise.
      *
-     * @param xScale   the effective x scale
-     * @param xIsDate  whether the x column carries date values
-     * @param xDouble  the x value in data units
+     * @param xScale  the effective x scale
+     * @param xIsDate whether the x column carries date values
+     * @param xDouble the x value in data units
      * @return the display label
      */
     static String xValueLabel(Scale xScale, boolean xIsDate, double xDouble) {
@@ -264,7 +265,13 @@ final class AesRendering {
             return (idx >= 0 && idx < categories.size())
                     ? String.valueOf(categories.get(idx)) : String.valueOf(xDouble);
         }
-        return xIsDate ? LocalDate.ofEpochDay((long) xDouble).toString() : String.valueOf(xDouble);
+        if (xIsDate) {
+            return LocalDate.ofEpochDay((long) xDouble).toString();
+        }
+        if (xScale.isTimestampScale()) {
+            return Temporals.label(Temporals.instantAt(xDouble));
+        }
+        return String.valueOf(xDouble);
     }
 
     /**

@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import javafx.scene.paint.Color;
 import org.jtaccuino.gog.coord.Coord;
+import org.jtaccuino.gog.data.Temporals;
 import org.jtaccuino.gog.render.DrawSurface;
 import org.jtaccuino.gog.scale.Scale;
 import org.jtaccuino.gog.spi.DataExtractor;
@@ -238,7 +239,9 @@ public class GeomArea<DF> extends StackableGeom<DF> {
             return null;
         }
 
-        var xIsDate = ext.columnType(df, aes.x()) == DataExtractor.ColumnType.DATE;
+        var xType = ext.columnType(df, aes.x());
+        var xIsDate = xType == DataExtractor.ColumnType.DATE;
+        var xIsTimestamp = xType == DataExtractor.ColumnType.TIMESTAMP;
 
         var groupCol = aes.color();
         if (groupCol == null) {
@@ -310,7 +313,9 @@ public class GeomArea<DF> extends StackableGeom<DF> {
                 var isInside = coord.isFlipped() ? (mx >= pLower && mx <= pUpper) : (my <= pLower && my >= pUpper);
 
                 if (isInside) {
-                    var labelX = xIsDate ? LocalDate.ofEpochDay((long) targetXVal).toString() : String.valueOf(targetXVal);
+                    var labelX = xIsDate ? LocalDate.ofEpochDay((long) targetXVal).toString()
+                            : xIsTimestamp ? Temporals.label(Temporals.instantAt(targetXVal))
+                            : String.valueOf(targetXVal);
                     return String.format("Area: %s\nDate: %s\nValue: %,.1f", groupKey, labelX, val);
                 }
                 currentLower = currentUpper;
@@ -331,7 +336,9 @@ public class GeomArea<DF> extends StackableGeom<DF> {
                 var isInside = coord.isFlipped() ? (mx >= pLower && mx <= pUpper) : (my <= pLower && my >= pUpper);
 
                 if (isInside) {
-                    var labelX = xIsDate ? LocalDate.ofEpochDay((long) targetXVal).toString() : String.valueOf(targetXVal);
+                    var labelX = xIsDate ? LocalDate.ofEpochDay((long) targetXVal).toString()
+                            : xIsTimestamp ? Temporals.label(Temporals.instantAt(targetXVal))
+                            : String.valueOf(targetXVal);
                     return String.format("Area: %s\nDate: %s\nValue: %,.1f", groupKey, labelX, val);
                 }
             }

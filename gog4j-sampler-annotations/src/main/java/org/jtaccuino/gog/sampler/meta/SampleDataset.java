@@ -28,6 +28,7 @@ public enum SampleDataset implements SampleTag {
     FAITHFUL("faithful", "Old Faithful"),
     ANSCOMBE("anscombe", "Anscombe's Quartet"),
     MEAT("meat", "Meat Production"),
+    SEATTLE_WEATHER("seattle-weather", "Seattle Hourly Weather"),
     GWAS("gwas", "Height GWAS"),
     POLAR("polar", "Polar Counts"),
     PENGUINS("penguins", "Palmer Penguins"),
