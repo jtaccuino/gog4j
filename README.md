@@ -4,7 +4,7 @@
 
 The project targets feature parity with established Grammar-of-Graphics implementations in a pure Java, type-safe form: the whole pipeline is statically typed and renders off-screen on the JVM, with no runtime interpreter and no dependency on a non-Java plotting runtime.
 
-![Build](https://img.shields.io/github/actions/workflow/status/jtaccuino/gog4j/gradleBuild.yml?branch=main) ![License](https://img.shields.io/github/license/jtaccuino/gog4j) ![Java](https://img.shields.io/badge/java-26-blue) ![Lines of Code](https://img.shields.io/badge/lines%20of%20code-37k-blue) ![Stars](https://img.shields.io/github/stars/jtaccuino/gog4j) ![Last Commit](https://img.shields.io/github/last-commit/jtaccuino/gog4j) ![Commits Since Release](https://img.shields.io/github/commits-since/jtaccuino/gog4j/latest)
+![Build](https://img.shields.io/github/actions/workflow/status/jtaccuino/gog4j/gradleBuild.yml?branch=main) ![Release](https://img.shields.io/github/v/release/jtaccuino/gog4j) ![License](https://img.shields.io/github/license/jtaccuino/gog4j) ![Java](https://img.shields.io/badge/java-26-blue) ![Stars](https://img.shields.io/github/stars/jtaccuino/gog4j) ![Last Commit](https://img.shields.io/github/last-commit/jtaccuino/gog4j) ![Commits Since Release](https://img.shields.io/github/commits-since/jtaccuino/gog4j/latest)
 
 ---
 
