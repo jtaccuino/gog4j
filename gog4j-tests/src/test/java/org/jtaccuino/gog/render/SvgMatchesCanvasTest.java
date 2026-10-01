@@ -32,6 +32,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import javafx.scene.Scene;
@@ -167,9 +168,9 @@ class SvgMatchesCanvasTest {
      */
     private static DataFrame hourlyData() {
         var n = 24;
-        var when = new java.time.LocalDateTime[n];
+        var when = new LocalDateTime[n];
         var reading = new double[n];
-        var start = java.time.LocalDateTime.of(2010, 1, 1, 0, 0);
+        var start = LocalDateTime.of(2010, 1, 1, 0, 0);
         for (var i = 0; i < n; i++) {
             when[i] = start.plusHours(i);
             reading[i] = 4.0 + 3.0 * Math.sin(i / 3.0);

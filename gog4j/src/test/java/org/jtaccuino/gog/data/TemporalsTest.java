@@ -17,6 +17,7 @@ package org.jtaccuino.gog.data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
@@ -70,7 +71,7 @@ class TemporalsTest {
 
     @Test
     void toEpochMillisRejectsValuesWithoutATimeOfDay() {
-        var thrown = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+        var thrown = assertThrows(IllegalArgumentException.class,
                 () -> Temporals.toEpochMillis(LocalDate.of(2010, 1, 1)));
         assertTrue(thrown.getMessage().contains("not a date-time"));
     }
