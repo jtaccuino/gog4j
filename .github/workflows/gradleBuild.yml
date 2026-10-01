@@ -193,9 +193,11 @@ jobs:
             --min-delta-us "$BENCH_MIN_DELTA_US" \
             --noisy-cv "$BENCH_NOISY_CV"
 
-      # Post or update the comparison comment on the pull request
+      # Post or update the comparison comment on the pull request. Fork pull
+      # requests get a read-only GITHUB_TOKEN, so the write would fail with a
+      # 403; skip it there and rely on the archived benchmark.md artifact.
       - name: Update PR benchmark comment
-        if: ${{ github.event_name == 'pull_request' && !cancelled() }}
+        if: ${{ github.event_name == 'pull_request' && !cancelled() && !github.event.pull_request.head.repo.fork }}
         uses: actions/github-script@v9.0.0
         with:
           script: |

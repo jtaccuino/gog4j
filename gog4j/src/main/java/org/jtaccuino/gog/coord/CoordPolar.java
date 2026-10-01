@@ -50,6 +50,9 @@ public class CoordPolar implements Coord {
     private static final double TWO_PI = 2.0 * Math.PI;
     private static final double HALF_PI = Math.PI / 2.0;
 
+    /** The number of breaks the theta axis aims for. */
+    private static final int THETA_BREAKS = 12;
+
     /**
      * Fraction of the data range added to each end of a continuous scale
      * inside a partial fan, so the minimum and maximum observations keep a
@@ -468,9 +471,6 @@ public class CoordPolar implements Coord {
     private int radialTarget() {
         return Math.max(4, (int) Math.round(radius() / 90.0) + 1);
     }
-
-    /** The number of breaks the theta axis aims for. */
-    private static final int THETA_BREAKS = 12;
 
     /**
      * The theta axis breaks: calendar breaks for a date or timestamp scale,
