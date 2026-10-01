@@ -22,7 +22,6 @@ jobs:
 
     permissions:
       contents: read
-      packages: write
 
     strategy:
       matrix:
@@ -61,13 +60,6 @@ jobs:
       # Run check tasks
       - name: Run check tasks
         run: ./gradlew --no-daemon --warning-mode all check
-
-      # Publish to GitHub Packages on push to main
-      - name: Publish to GitHub Packages
-        if: ${{ (github.event_name == 'push') && success() }}
-        run: ./gradlew --no-daemon --warning-mode all publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Archive test reports
       - name: Archive build logs
